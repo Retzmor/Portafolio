@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Erwin - Portafolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background:#0B0C10;
+      color:#FFFFFF;
+      line-height:1.6;
+    }
+
+    section {
+      padding:80px 20px;
+      max-width:1000px;
+      margin:auto;
+    }
+
+    h1 { font-size:40px; margin-bottom:20px; }
+    h2 { font-size:28px; margin-bottom:20px; }
+    p { color:#A0A0A0; margin-bottom:15px; }
+
+    .center { text-align:center; }
+
+    .btn {
+      display:inline-block;
+      margin:10px;
+      padding:10px 20px;
+      background:#3B82F6;
+      color:#fff;
+      text-decoration:none;
+      border-radius:8px;
+      transition:0.3s;
+    }
+
+    .btn:hover {
+      background:#2563EB;
+    }
+
+    .grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .card {
+      background:#111217;
+      padding:20px;
+      border-radius:12px;
+      transition:0.3s;
+    }
+
+    .card:hover {
+      transform:scale(1.03);
+      box-shadow:0 0 15px rgba(59,130,246,0.2);
+    }
+
+    .skills span {
+      display:inline-block;
+      background:#111217;
+      padding:10px;
+      margin:5px;
+      border-radius:8px;
+    }
+
+    .card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+    
+
+    a { color:#3B82F6; text-decoration:none; }
+
+    .card:last-child {
+  grid-column: 1 / -1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <section class="center">
+    <h1>Desarrollador de videojuegos en Unity y C#</h1>
+    <p>Construyo sistemas jugables, resuelvo problemas técnicos y desarrollo experiencias interactivas funcionales.</p>
+    <p><strong>📩 Disponible para prácticas / trabajo</strong></p>
+    <a href="https://retzmor.itch.io" class="btn">Itch.io</a>
+    <a href="#proyectos" class="btn">Ver proyectos</a>
+    <a href="#contacto" class="btn">Contacto</a>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos">
+    <h2 class="center">Proyectos</h2>
+    <div class="grid">
+
+      <div class="card">
+        <img src="imagenes/thomas.png" alt="Thomas Was Alone">
+        <h3>Thomas Was Alone</h3>
+        <p>Movimiento, físicas y control de múltiples personajes.</p>
+        <a href="https://retzmor.itch.io/thomas-was-alone">Ver en itch.io</a>
+      </div>
+
+      <div class="card">
+        <img src="imagenes/flappy.png" alt="Flappy Ufo">
+        <h3>Flappy Ufo</h3>
+        <p>Colisiones, obstáculos y sistema de reinicio.</p>
+        <a href="https://retzmor.itch.io/flappy-bird">Ver en itch.io</a>
+      </div>
+
+      <div class="card">
+        <img src="imagenes/plantocalypse.png" alt="Plantocalypse">
+        <h3>Plantocalypse</h3>
+        <p>Sistema de supervivencia e interacción.</p>
+        <a href="https://retzmor.itch.io/plantocalypse">Ver en itch.io</a>
+      </div>
+
+      <div class="card">
+        <img src="imagenes/ashes.png" alt="ashes">
+        <h3>Ashes of Destiny</h3>
+        <p>Movimiento, combate básico y estructura del juego.</p>
+        <a href="https://retzmor.itch.io/ashes-of-destiny">Ver en itch.io</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SOBRE MI -->
+  <section class="center">
+    <h2>Sobre mí</h2>
+    <p>Soy desarrollador de videojuegos en formación, enfocado en Unity y C#. Me interesa resolver problemas técnicos y construir sistemas funcionales.</p>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="center">
+    <h2>Habilidades</h2>
+    <div class="skills">
+      <span>Unity (C#)</span>
+      <span>Lógica de programación</span>
+      <span>Físicas y colisiones</span>
+      <span>Debugging</span>
+      <span>Tester</span>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="center">
+    <h2>Contacto</h2>
+    <p>Email: erwinsalas1278@gmail.com</p>
+    <p>Whatsapp: 3125313724</p>
+    <a href="mailto:erwinsalas1278@gmail.com" class="btn">Enviar correo</a>
+  </section>
+
+</body>
+</html>
