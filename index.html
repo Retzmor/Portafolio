@@ -3,154 +3,245 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Erwin - Portafolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Erwin Salas - Portafolio Game Dev</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
 
     body {
       font-family: 'Inter', sans-serif;
-      background:#0B0C10;
-      color:#FFFFFF;
-      line-height:1.6;
+      background: #0B0C10;
+      color: #FFFFFF;
+      line-height: 1.6;
     }
 
     section {
-      padding:80px 20px;
-      max-width:1000px;
-      margin:auto;
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
     }
 
-    h1 { font-size:40px; margin-bottom:20px; }
-    h2 { font-size:28px; margin-bottom:20px; }
-    p { color:#A0A0A0; margin-bottom:15px; }
+    /* --- HERO / HEADER SECTION --- */
+    .hero-section {
+      text-align: left;
+      padding: 100px 20px 60px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
-    .center { text-align:center; }
+    h1 { 
+      font-size: 48px; 
+      font-weight: 700; 
+      margin-bottom: 5px; 
+      color: #FFFFFF; 
+      letter-spacing: -1px;
+    }
+
+    .hero-subtitle { 
+      font-size: 20px; 
+      font-weight: 300; 
+      color: #3B82F6; 
+      margin-bottom: 20px; 
+    }
+
+    .available-tag {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: #10B981;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    .hero-description { 
+      font-size: 1.1rem; 
+      color: #A0A0A0; 
+      max-width: 700px; 
+      margin-bottom: 25px; 
+    }
+
+    /* --- BOTONES CON BORDES AZULES UNIFORMES --- */
+    .btn-container { 
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px; 
+    }
 
     .btn {
-      display:inline-block;
-      margin:10px;
-      padding:10px 20px;
-      background:#3B82F6;
-      color:#fff;
-      text-decoration:none;
-      border-radius:8px;
-      transition:0.3s;
+      display: inline-block;
+      padding: 10px 22px;
+      background: transparent;
+      color: #FFFFFF;
+      border: 1.5px solid #3B82F6; /* Borde azul para TODOS */
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.15);
     }
 
     .btn:hover {
-      background:#2563EB;
+      background: #3B82F6;
+      color: #0B0C10;
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+      transform: translateY(-2px);
     }
 
+    /* --- SECCIONES Y GENERALES --- */
+    h2 { 
+      font-size: 28px; 
+      margin-bottom: 25px; 
+    }
+
+    .center { 
+      text-align: center; 
+    }
+
+    p { 
+      color: #A0A0A0; 
+      margin-bottom: 15px; 
+    }
+
+    /* --- TARJETAS DE PROYECTOS (GRID 2x2) --- */
     .grid {
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-      gap:20px;
+      display: grid;
+      /* Ajustado a minmax 320px para forzar un diseño uniforme 2x2 en escritorios */
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
     }
 
     .card {
-      background:#111217;
-      padding:20px;
-      border-radius:12px;
-      transition:0.3s;
+      background: #111217;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .card:hover {
-      transform:scale(1.03);
-      box-shadow:0 0 15px rgba(59,130,246,0.2);
-    }
-
-    .skills span {
-      display:inline-block;
-      background:#111217;
-      padding:10px;
-      margin:5px;
-      border-radius:8px;
+      transform: translateY(-5px);
+      border-color: rgba(59, 130, 246, 0.4);
+      box-shadow: 0 5px 20px rgba(59, 130, 246, 0.2);
     }
 
     .card img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
 
-.card img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  transition: 0.3s;
-}
+    .card:hover img {
+      transform: scale(1.04);
+    }
 
-.card:hover img {
-  transform: scale(1.05);
-}
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #FFFFFF;
+    }
 
-.card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 10px;
-}
+    .card p {
+      font-size: 0.95rem;
+      flex-grow: 1;
+    }
 
-.card {
-  border: 1px solid rgba(255,255,255,0.05);
-}
+    .card a {
+      color: #3B82F6;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      display: inline-block;
+    }
 
-    a { color:#3B82F6; text-decoration:none; }
+    .card a:hover {
+      text-decoration: underline;
+    }
 
-    .card:last-child {
-  grid-column: 1 / -1;
-  max-width: 300px;
-  margin: 0 auto;
-}
-
+    /* --- HABILIDADES --- */
+    .skills span {
+      display: inline-block;
+      background: #111217;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 8px 16px;
+      margin: 5px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: #E0E0E0;
+    }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <section class="center">
+  <!-- HEADER / HERO -->
+  <section class="hero-section">
     <h1>Erwin Salas</h1>
-    <p>Desarrollador de videojuegos en Unity y C#</p>
-    <p>Construyo sistemas jugables, resuelvo problemas técnicos y desarrollo experiencias interactivas funcionales.</p>
-    <p><strong>📩 Disponible para prácticas / trabajo</strong></p>
-    <a href="https://retzmor.itch.io" class="btn">Itch.io</a>
-    <a href="https://github.com/Retzmor?tab=repositories" class="btn">GitHub</a>
-    <a href="#proyectos" class="btn">Ver proyectos</a>
-    <a href="#contacto" class="btn">Contacto</a>
+    <div class="hero-subtitle">Desarrollador de videojuegos en Unity & C#</div>
+    
+    <div class="available-tag">
+      ● Disponible para prácticas / empleo
+    </div>
+    
+    <p class="hero-description">
+      Construyo sistemas jugables, resuelvo problemas técnicos y desarrollo experiencias interactivas funcionales con foco en la arquitectura de código limpia y la optimización.
+    </p>
+    
+    <div class="btn-container">
+      <a href="https://retzmor.itch.io" target="_blank" class="btn">Itch.io</a>
+      <a href="https://github.com/Retzmor?tab=repositories" target="_blank" class="btn">GitHub</a>
+      <a href="#proyectos" class="btn">Ver proyectos</a>
+      <a href="#contacto" class="btn">Contacto</a>
+    </div>
   </section>
 
   <!-- PROYECTOS -->
   <section id="proyectos">
-    <h2 class="center">Proyectos</h2>
+    <h2>Proyectos</h2>
     <div class="grid">
 
       <div class="card">
-        <img src="Imagenes/thomas.png" alt="Thomas Was Alone">
+        <img src="imagenes/thomas.png" alt="Thomas Was Alone">
         <h3>Thomas Was Alone</h3>
         <p>Movimiento, físicas y control de múltiples personajes.</p>
-        <a href="https://retzmor.itch.io/thomas-was-alone">Ver en itch.io</a>
+        <a href="https://retzmor.itch.io/thomas-was-alone" target="_blank">Ver demo en itch.io →</a>
       </div>
 
       <div class="card">
-        <img src="Imagenes/flappy.png" alt="Flappy Ufo">
+        <img src="imagenes/flappy.png" alt="Flappy Ufo">
         <h3>Flappy Ufo</h3>
-        <p>Colisiones, obstáculos y sistema de reinicio.</p>
-        <a href="https://retzmor.itch.io/flappy-bird">Ver en itch.io</a>
+        <p>Colisiones, gestión de obstáculos y sistema de reinicio.</p>
+        <a href="https://retzmor.itch.io/flappy-bird" target="_blank">Ver demo en itch.io →</a>
       </div>
 
       <div class="card">
-        <img src="Imagenes/plantocalypse.png" alt="Plantocalypse">
+        <img src="imagenes/plantocalypse.png" alt="Plantocalypse">
         <h3>Plantocalypse</h3>
-        <p>Sistema de supervivencia e interacción.</p>
-        <a href="https://retzmor.itch.io/plantocalypse">Ver en itch.io</a>
+        <p>Sistema de supervivencia e interacción con el entorno.</p>
+        <a href="https://retzmor.itch.io/plantocalypse" target="_blank">Ver demo en itch.io →</a>
       </div>
 
       <div class="card">
-        <img src="Imagenes/ashes.png" alt="ashes">
+        <img src="imagenes/ashes.png" alt="Ashes of Destiny">
         <h3>Ashes of Destiny</h3>
-        <p>Movimiento, combate básico y estructura del juego.</p>
-        <a href="https://retzmor.itch.io/ashes-of-destiny">Ver en itch.io</a>
+        <p>Movimiento de personaje, combate básico y estructura del juego.</p>
+        <a href="https://retzmor.itch.io/ashes-of-destiny" target="_blank">Ver demo en itch.io →</a>
       </div>
 
     </div>
@@ -159,27 +250,32 @@
   <!-- SOBRE MI -->
   <section class="center">
     <h2>Sobre mí</h2>
-    <p>Soy desarrollador de videojuegos en formación, enfocado en Unity y C#. Me interesa resolver problemas técnicos y construir sistemas funcionales.</p>
+    <p>Soy desarrollador de videojuegos en formación con enfoque técnico en Unity y C#. Me interesa la resolución de problemas lógicos, el diseño de mecánicas sólidas y la creación de prototipos funcionales.</p>
   </section>
 
-  <!-- SKILLS -->
+  <!-- HABILIDADES -->
   <section class="center">
-    <h2>Habilidades</h2>
+    <h2>Habilidades Técnicas</h2>
     <div class="skills">
       <span>Unity (C#)</span>
-      <span>Lógica de programación</span>
-      <span>Físicas y colisiones</span>
+      <span>Lógica de Programación</span>
+      <span>Físicas & Colisiones</span>
       <span>Debugging</span>
-      <span>Tester</span>
+      <span>Game Testing</span>
+      <span>Git / GitHub</span>
     </div>
   </section>
 
   <!-- CONTACTO -->
   <section id="contacto" class="center">
     <h2>Contacto</h2>
-    <p>Email: erwinsalas1278@gmail.com</p>
-    <p>Whatsapp: 3125313724</p>
-    <a href="mailto:erwinsalas1278@gmail.com" class="btn">Enviar correo</a>
+    <p>¿Tienes una oportunidad o vacante? Hablemos.</p>
+    <p>Email: <strong>erwinsalas1278@gmail.com</strong></p>
+    
+    <div class="btn-container" style="justify-content: center; margin-top: 20px;">
+      <a href="mailto:erwinsalas1278@gmail.com" class="btn">Enviar correo</a>
+      <a href="https://wa.me/573125313724" target="_blank" class="btn" style="border-color: #25D366;">WhatsApp</a>
+    </div>
   </section>
 
 </body>
