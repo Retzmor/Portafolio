@@ -6,23 +6,86 @@
   <title>Erwin Salas - Portafolio Game Dev</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #080a10;
+      --blue: #3B82F6;
+      --blue-rgb: 59, 130, 246;
+      --green: #10B981;
+      --green-rgb: 16, 185, 129;
+    }
+
     * { 
       margin: 0; 
       padding: 0; 
       box-sizing: border-box; 
     }
 
+    html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Inter', sans-serif;
-      background: #0B0C10;
+      background-color: var(--bg);
       color: #FFFFFF;
       line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* --- FONDO: GRADIENTE + MALLA OSCURA AZULADA --- */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(900px 600px at 12% -5%, rgba(59, 130, 246, 0.16), transparent 60%),
+        radial-gradient(800px 600px at 95% 20%, rgba(99, 102, 241, 0.10), transparent 60%),
+        radial-gradient(900px 700px at 50% 110%, rgba(30, 64, 120, 0.18), transparent 60%),
+        linear-gradient(180deg, #0a0d16 0%, #080a10 50%, #0b0f1a 100%);
+      animation: bgShift 22s ease-in-out infinite alternate;
+    }
+
+    /* Malla sutil con desvanecido en los bordes */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.045) 1px, transparent 1px);
+      background-size: 48px 48px;
+      -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
+      mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
+    }
+
+    @keyframes bgShift {
+      from { transform: scale(1) translate3d(0, 0, 0); }
+      to   { transform: scale(1.08) translate3d(-1.5%, 1%, 0); }
     }
 
     section {
       padding: 60px 20px;
       max-width: 1000px;
       margin: auto;
+    }
+
+    /* --- ANIMACIONES DE ENTRADA / SCROLL --- */
+    /* Solo se oculta si JS está activo, así el contenido nunca queda invisible */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: var(--delay, 0s);
+      will-change: opacity, transform;
+    }
+
+    .js .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* --- HERO / HEADER SECTION --- */
@@ -38,27 +101,85 @@
       font-size: 48px; 
       font-weight: 700; 
       margin-bottom: 5px; 
-      color: #FFFFFF; 
       letter-spacing: -1px;
+      background: linear-gradient(135deg, #FFFFFF 30%, #93C5FD 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: #FFFFFF;
     }
 
     .hero-subtitle { 
       font-size: 20px; 
       font-weight: 300; 
-      color: #3B82F6; 
+      color: var(--blue); 
       margin-bottom: 20px; 
     }
 
+    /* --- ETIQUETA DISPONIBLE (PUNTO CON PULSO) --- */
     .available-tag {
-      display: inline-block;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       font-size: 0.85rem;
-      color: #10B981;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 6px 14px;
-      border-radius: 20px;
+      color: #6EE7B7;
+      background: linear-gradient(135deg, rgba(var(--green-rgb), 0.16), rgba(var(--green-rgb), 0.05));
+      border: 1px solid rgba(var(--green-rgb), 0.35);
+      padding: 7px 16px 7px 14px;
+      border-radius: 999px;
       margin-bottom: 25px;
       font-weight: 600;
+      letter-spacing: 0.2px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 0 24px rgba(var(--green-rgb), 0.15), inset 0 0 12px rgba(var(--green-rgb), 0.06);
+      overflow: hidden;
+    }
+
+    /* Brillo que recorre la etiqueta */
+    .available-tag::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -60%;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+      transform: skewX(-20deg);
+      animation: shine 4.5s ease-in-out infinite;
+    }
+
+    .pulse-dot {
+      position: relative;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #34D399;
+      box-shadow: 0 0 8px #34D399;
+      flex-shrink: 0;
+    }
+
+    .pulse-dot::before,
+    .pulse-dot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #34D399;
+      animation: pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .pulse-dot::after { animation-delay: 1s; }
+
+    @keyframes pulse {
+      0%   { transform: scale(1);   opacity: 0.7; }
+      100% { transform: scale(3.2); opacity: 0; }
+    }
+
+    @keyframes shine {
+      0%, 60% { left: -60%; }
+      100%    { left: 130%; }
     }
 
     .hero-description { 
@@ -79,21 +200,21 @@
     .btn {
       display: inline-block;
       padding: 10px 22px;
-      background: transparent;
+      background: rgba(var(--blue-rgb), 0.04);
       color: #FFFFFF;
-      border: 1.5px solid #3B82F6; /* Borde azul para TODOS */
+      border: 1.5px solid var(--blue); /* Borde azul para TODOS */
       text-decoration: none;
       border-radius: 8px;
       font-weight: 600;
       font-size: 0.95rem;
       transition: all 0.3s ease;
-      box-shadow: 0 0 10px rgba(59, 130, 246, 0.15);
+      box-shadow: 0 0 10px rgba(var(--blue-rgb), 0.15);
     }
 
     .btn:hover {
-      background: #3B82F6;
+      background: var(--blue);
       color: #0B0C10;
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+      box-shadow: 0 0 22px rgba(var(--blue-rgb), 0.5);
       transform: translateY(-2px);
     }
 
@@ -121,21 +242,64 @@
     }
 
     .card {
-      background: #111217;
+      --mx: 50%;
+      --my: 0%;
+      position: relative;
+      isolation: isolate;
+      background: linear-gradient(160deg, rgba(20, 24, 38, 0.9), rgba(13, 15, 24, 0.9));
       padding: 20px;
-      border-radius: 12px;
+      border-radius: 14px;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.45s ease,
+                  border-color 0.45s ease;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
+    /* Resplandor que sigue al cursor dentro de la tarjeta */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: inherit;
+      background: radial-gradient(380px circle at var(--mx) var(--my), rgba(var(--blue-rgb), 0.18), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.45s ease;
+    }
+
+    /* Borde luminoso en degradado */
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.9), rgba(var(--blue-rgb), 0.1) 45%, rgba(129, 140, 248, 0.7));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+      opacity: 0;
+      transition: opacity 0.45s ease;
+      pointer-events: none;
+    }
+
     .card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(59, 130, 246, 0.4);
-      box-shadow: 0 5px 20px rgba(59, 130, 246, 0.2);
+      transform: translateY(-8px);
+      border-color: transparent;
+      box-shadow:
+        0 18px 40px -12px rgba(var(--blue-rgb), 0.35),
+        0 0 0 1px rgba(var(--blue-rgb), 0.15),
+        0 0 45px rgba(var(--blue-rgb), 0.18);
+    }
+
+    .card:hover::before,
+    .card:hover::after {
+      opacity: 1;
     }
 
     .card img {
@@ -144,11 +308,13 @@
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 15px;
-      transition: transform 0.3s ease;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
+      filter: saturate(0.95) brightness(0.95);
     }
 
     .card:hover img {
-      transform: scale(1.04);
+      transform: scale(1.05);
+      filter: saturate(1.1) brightness(1.05);
     }
 
     .card h3 {
@@ -163,47 +329,68 @@
     }
 
     .card a {
-      color: #3B82F6;
+      color: var(--blue);
       text-decoration: none;
       font-weight: 600;
       font-size: 0.9rem;
       margin-top: 10px;
       display: inline-block;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
     .card a:hover {
+      color: #93C5FD;
+      transform: translateX(4px);
       text-decoration: underline;
     }
 
     /* --- HABILIDADES --- */
     .skills span {
       display: inline-block;
-      background: #111217;
+      background: rgba(17, 18, 23, 0.7);
       border: 1px solid rgba(255, 255, 255, 0.08);
       padding: 8px 16px;
       margin: 5px;
       border-radius: 8px;
       font-size: 0.9rem;
       color: #E0E0E0;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .skills span:hover {
+      transform: translateY(-3px);
+      border-color: rgba(var(--blue-rgb), 0.5);
+      box-shadow: 0 6px 18px rgba(var(--blue-rgb), 0.2);
+    }
+
+    /* --- ACCESIBILIDAD: MOVIMIENTO REDUCIDO --- */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+      }
+      .js .reveal { opacity: 1; transform: none; }
     }
   </style>
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
   <!-- HEADER / HERO -->
   <section class="hero-section">
-    <h1>Erwin Salas</h1>
-    <div class="hero-subtitle">Desarrollador de videojuegos en Unity & C#</div>
+    <h1 class="reveal">Erwin Salas</h1>
+    <div class="hero-subtitle reveal" style="--delay: 0.1s">Desarrollador de videojuegos en Unity &amp; C#</div>
     
-    <div class="available-tag">
-      ● Disponible para prácticas / empleo
+    <div class="available-tag reveal" style="--delay: 0.2s">
+      <span class="pulse-dot" aria-hidden="true"></span>
+      Disponible para prácticas / empleo
     </div>
     
-    <p class="hero-description">
+    <p class="hero-description reveal" style="--delay: 0.3s">
       Construyo sistemas jugables, resuelvo problemas técnicos y desarrollo experiencias interactivas funcionales con foco en la arquitectura de código limpia y la optimización.
     </p>
     
-    <div class="btn-container">
+    <div class="btn-container reveal" style="--delay: 0.4s">
       <a href="https://retzmor.itch.io" target="_blank" class="btn">Itch.io</a>
       <a href="https://github.com/Retzmor?tab=repositories" target="_blank" class="btn">GitHub</a>
       <a href="#proyectos" class="btn">Ver proyectos</a>
@@ -213,31 +400,31 @@
 
   <!-- PROYECTOS -->
   <section id="proyectos">
-    <h2>Proyectos</h2>
+    <h2 class="reveal">Proyectos</h2>
     <div class="grid">
 
-      <div class="card">
+      <div class="card reveal">
         <img src="Imagenes/thomas.png" alt="Thomas Was Alone">
         <h3>Thomas Was Alone</h3>
         <p>Movimiento, físicas y control de múltiples personajes.</p>
         <a href="https://retzmor.itch.io/thomas-was-alone" target="_blank">Ver demo en itch.io →</a>
       </div>
 
-      <div class="card">
+      <div class="card reveal" style="--delay: 0.12s">
         <img src="Imagenes/flappy.png" alt="Flappy Ufo">
         <h3>Flappy Ufo</h3>
         <p>Colisiones, gestión de obstáculos y sistema de reinicio.</p>
         <a href="https://retzmor.itch.io/flappy-bird" target="_blank">Ver demo en itch.io →</a>
       </div>
 
-      <div class="card">
+      <div class="card reveal">
         <img src="Imagenes/plantocalypse.png" alt="Plantocalypse">
         <h3>Plantocalypse</h3>
         <p>Sistema de supervivencia e interacción con el entorno.</p>
         <a href="https://retzmor.itch.io/plantocalypse" target="_blank">Ver demo en itch.io →</a>
       </div>
 
-      <div class="card">
+      <div class="card reveal" style="--delay: 0.12s">
         <img src="Imagenes/ashes.png" alt="Ashes of Destiny">
         <h3>Ashes of Destiny</h3>
         <p>Movimiento de personaje, combate básico y estructura del juego.</p>
@@ -249,17 +436,17 @@
 
   <!-- SOBRE MI -->
   <section class="center">
-    <h2>Sobre mí</h2>
-    <p>Soy desarrollador de videojuegos en formación con enfoque técnico en Unity y C#. Me interesa la resolución de problemas lógicos, el diseño de mecánicas sólidas y la creación de prototipos funcionales.</p>
+    <h2 class="reveal">Sobre mí</h2>
+    <p class="reveal" style="--delay: 0.1s">Soy desarrollador de videojuegos en formación con enfoque técnico en Unity y C#. Me interesa la resolución de problemas lógicos, el diseño de mecánicas sólidas y la creación de prototipos funcionales.</p>
   </section>
 
   <!-- HABILIDADES -->
   <section class="center">
-    <h2>Habilidades Técnicas</h2>
-    <div class="skills">
+    <h2 class="reveal">Habilidades Técnicas</h2>
+    <div class="skills reveal" style="--delay: 0.1s">
       <span>Unity (C#)</span>
       <span>Lógica de Programación</span>
-      <span>Físicas & Colisiones</span>
+      <span>Físicas &amp; Colisiones</span>
       <span>Debugging</span>
       <span>Game Testing</span>
       <span>Git / GitHub</span>
@@ -268,15 +455,46 @@
 
   <!-- CONTACTO -->
   <section id="contacto" class="center">
-    <h2>Contacto</h2>
-    <p>¿Tienes una oportunidad o vacante? Hablemos.</p>
-    <p>Email: <strong>erwinsalas1278@gmail.com</strong></p>
+    <h2 class="reveal">Contacto</h2>
+    <p class="reveal" style="--delay: 0.1s">¿Tienes una oportunidad o vacante? Hablemos.</p>
+    <p class="reveal" style="--delay: 0.15s">Email: <strong>erwinsalas1278@gmail.com</strong></p>
     
-    <div class="btn-container" style="justify-content: center; margin-top: 20px;">
+    <div class="btn-container reveal" style="justify-content: center; margin-top: 20px; --delay: 0.25s">
       <a href="mailto:erwinsalas1278@gmail.com" class="btn">Enviar correo</a>
       <a href="https://wa.me/573125313724" target="_blank" class="btn" style="border-color: #25D366;">WhatsApp</a>
     </div>
   </section>
+
+  <script>
+    // Animaciones de entrada al hacer scroll
+    (function () {
+      var items = document.querySelectorAll('.reveal');
+
+      if (!('IntersectionObserver' in window)) {
+        items.forEach(function (el) { el.classList.add('visible'); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        items.forEach(function (el) { io.observe(el); });
+      }
+
+      // Resplandor de las tarjetas siguiendo el cursor
+      document.querySelectorAll('.card').forEach(function (card) {
+        card.addEventListener('mousemove', function (e) {
+          var r = card.getBoundingClientRect();
+          card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+          card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
