@@ -1,55 +1,100 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Erwin Salas - Portafolio Game Dev</title>
-  <!-- Favicon: gamepad minimalista en azul neón sobre fondo circular oscuro (SVG inline) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%230B0C10'/%3E%3Ccircle cx='32' cy='32' r='29.5' fill='none' stroke='%233B82F6' stroke-opacity='.35' stroke-width='1.5'/%3E%3Cg transform='translate(6.4 3.2) scale(.8)' fill='none' stroke='%233B82F6' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 24h28a10 10 0 0 1 9.6 7.3l3 11a6 6 0 0 1-10.3 5.4L42 41H22l-6.3 6.7A6 6 0 0 1 5.4 42.3l3-11A10 10 0 0 1 18 24z'/%3E%3Cpath d='M21 30v8M17 34h8' stroke-width='2.8'/%3E%3Ccircle cx='43' cy='31.5' r='2' fill='%233B82F6' stroke='none'/%3E%3Ccircle cx='49' cy='36.5' r='2' fill='%233B82F6' stroke='none'/%3E%3C/g%3E%3C/svg%3E">
+  <meta name="description"
+    content="Portafolio de Erwin Salas, estudiante de Desarrollo de Videojuegos y Entornos Interactivos en el SENA y desarrollador en Unity y C#.">
+  <title>Erwin Salas — Portafolio Game Dev (Unity &amp; C#)</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Favicon: gamepad minimalista en azul neón sobre fondo circular oscuro (SVG inline) -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%230B0C10'/%3E%3Ccircle cx='32' cy='32' r='29.5' fill='none' stroke='%233B82F6' stroke-opacity='.35' stroke-width='1.5'/%3E%3Cg transform='translate(6.4 3.2) scale(.8)' fill='none' stroke='%233B82F6' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 24h28a10 10 0 0 1 9.6 7.3l3 11a6 6 0 0 1-10.3 5.4L42 41H22l-6.3 6.7A6 6 0 0 1 5.4 42.3l3-11A10 10 0 0 1 18 24z'/%3E%3Cpath d='M21 30v8M17 34h8' stroke-width='2.8'/%3E%3Ccircle cx='43' cy='31.5' r='2' fill='%233B82F6' stroke='none'/%3E%3Ccircle cx='49' cy='36.5' r='2' fill='%233B82F6' stroke='none'/%3E%3C/g%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
+
   <style>
     :root {
-      --bg: #080a10;
-      --blue: #3B82F6;
-      --blue-rgb: 59, 130, 246;
-      --green: #10B981;
-      --green-rgb: 16, 185, 129;
+      --bg-canvas: #07090f;
+      --bg-surface: #0d121e;
+      --bg-surface-hover: #111829;
+      --bg-elevated: #141c2e;
+      --bg-header: rgba(7, 9, 15, 0.82);
+
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+
+      --accent: #3b82f6;
+      --accent-hover: #60a5fa;
+      --accent-soft: #93c5fd;
+      --accent-rgb: 59, 130, 246;
+      --indigo-rgb: 99, 102, 241;
+
+      --status-ok: #34d399;
+      --status-ok-text: #6ee7b7;
+      --status-ok-rgb: 16, 185, 129;
+
+      --whatsapp: #25d366;
+      --whatsapp-rgb: 37, 211, 102;
+
+      --border-subtle: rgba(148, 163, 184, 0.14);
+      --border-strong: rgba(148, 163, 184, 0.28);
+
+      --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+      --container-max: 1080px;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    * { 
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box; 
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: no-preference) {
+      html {
+        scroll-behavior: smooth;
+      }
+    }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
-      color: #FFFFFF;
+      font-family: var(--font-sans);
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
       line-height: 1.6;
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* --- FONDO: GRADIENTE + MALLA OSCURA AZULADA --- */
+    /* Fondo atmosférico estático + retícula técnica tipo blueprint/editor */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       z-index: -2;
+      pointer-events: none;
       background:
-        radial-gradient(900px 600px at 12% -5%, rgba(59, 130, 246, 0.16), transparent 60%),
-        radial-gradient(800px 600px at 95% 20%, rgba(99, 102, 241, 0.10), transparent 60%),
-        radial-gradient(900px 700px at 50% 110%, rgba(30, 64, 120, 0.18), transparent 60%),
-        linear-gradient(180deg, #0a0d16 0%, #080a10 50%, #0b0f1a 100%);
-      animation: bgShift 22s ease-in-out infinite alternate;
+        radial-gradient(880px 540px at 10% -6%, rgba(var(--accent-rgb), 0.14), transparent 62%),
+        radial-gradient(720px 520px at 92% 18%, rgba(var(--indigo-rgb), 0.09), transparent 60%),
+        linear-gradient(180deg, #090d16 0%, var(--bg-canvas) 55%, #090e18 100%);
     }
 
-    /* Malla sutil con desvanecido en los bordes */
     body::after {
       content: "";
       position: fixed;
@@ -57,33 +102,78 @@
       z-index: -1;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(148, 163, 184, 0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(148, 163, 184, 0.045) 1px, transparent 1px);
-      background-size: 48px 48px;
-      -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
-      mask-image: radial-gradient(ellipse at 50% 30%, #000 20%, transparent 75%);
+        linear-gradient(rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+      -webkit-mask-image: radial-gradient(ellipse at 50% 25%, #000 18%, transparent 78%);
+      mask-image: radial-gradient(ellipse at 50% 25%, #000 18%, transparent 78%);
     }
 
-    @keyframes bgShift {
-      from { transform: scale(1) translate3d(0, 0, 0); }
-      to   { transform: scale(1.08) translate3d(-1.5%, 1%, 0); }
+    a {
+      color: inherit;
     }
 
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
+    :focus-visible {
+      outline: 2px solid var(--accent-soft);
+      outline-offset: 3px;
     }
 
-    /* --- ANIMACIONES DE ENTRADA / SCROLL --- */
-    /* Solo se oculta si JS está activo, así el contenido nunca queda invisible */
+    :is(.btn, .copy-btn):focus-visible {
+      outline: 2px solid var(--accent-soft);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.28);
+    }
+
+    section[id] {
+      scroll-margin-top: 84px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 16px;
+      z-index: 100;
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      background: var(--accent);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      text-decoration: none;
+      transition: top 0.2s ease;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin-inline: auto;
+      padding-inline: 24px;
+    }
+
+    /* --- ANIMACIONES DE ENTRADA --- */
     .js .reveal {
       opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(22px);
+      transition:
+        opacity 0.7s var(--ease-out),
+        transform 0.7s var(--ease-out);
       transition-delay: var(--delay, 0s);
-      will-change: opacity, transform;
     }
 
     .js .reveal.visible {
@@ -91,386 +181,1240 @@
       transform: translateY(0);
     }
 
-    /* --- HERO / HEADER SECTION --- */
-    .hero-section {
-      text-align: center;
-      padding: 100px 20px 60px 20px;
+    /* --- HEADER / HUD BAR --- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: var(--bg-header);
+      border-bottom: 1px solid var(--border-subtle);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
       display: flex;
-      flex-direction: column;
       align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 64px;
+      padding-block: 10px;
     }
 
-    h1 { 
-      font-size: 48px; 
-      font-weight: 700; 
-      margin-bottom: 5px; 
-      letter-spacing: -1px;
-      background: linear-gradient(135deg, #FFFFFF 30%, #93C5FD 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: #FFFFFF;
-    }
-
-    .hero-subtitle { 
-      font-size: 20px; 
-      font-weight: 300; 
-      color: var(--blue); 
-      margin-bottom: 20px; 
-    }
-
-    /* --- ETIQUETA DISPONIBLE (PUNTO CON PULSO) --- */
-    .available-tag {
-      position: relative;
+    .brand-mark {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      font-size: 0.85rem;
-      color: #6EE7B7;
-      background: linear-gradient(135deg, rgba(var(--green-rgb), 0.16), rgba(var(--green-rgb), 0.05));
-      border: 1px solid rgba(var(--green-rgb), 0.35);
-      padding: 7px 16px 7px 14px;
-      border-radius: 999px;
-      margin-bottom: 25px;
-      font-weight: 600;
-      letter-spacing: 0.2px;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      box-shadow: 0 0 24px rgba(var(--green-rgb), 0.15), inset 0 0 12px rgba(var(--green-rgb), 0.06);
-      overflow: hidden;
+      gap: 6px;
     }
 
-    /* Brillo que recorre la etiqueta */
-    .available-tag::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -60%;
-      width: 40%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
-      transform: skewX(-20deg);
-      animation: shine 4.5s ease-in-out infinite;
+    .brand-bracket {
+      color: var(--accent);
+    }
+
+    .brand-role {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .main-nav a {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .main-nav a:hover {
+      color: var(--text-primary);
+    }
+
+    /* --- ETIQUETA DISPONIBLE --- */
+    .available-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 6px 13px;
+      border-radius: 999px;
+      background: rgba(var(--status-ok-rgb), 0.1);
+      border: 1px solid rgba(var(--status-ok-rgb), 0.34);
+      color: var(--status-ok-text);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      white-space: nowrap;
     }
 
     .pulse-dot {
       position: relative;
-      width: 9px;
-      height: 9px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background: #34D399;
-      box-shadow: 0 0 8px #34D399;
+      background: var(--status-ok);
+      box-shadow: 0 0 8px var(--status-ok);
       flex-shrink: 0;
     }
 
-    .pulse-dot::before,
     .pulse-dot::after {
       content: "";
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      background: #34D399;
-      animation: pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+      background: var(--status-ok);
+      animation: pulse 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
     }
-
-    .pulse-dot::after { animation-delay: 1s; }
 
     @keyframes pulse {
-      0%   { transform: scale(1);   opacity: 0.7; }
-      100% { transform: scale(3.2); opacity: 0; }
+      0% {
+        transform: scale(1);
+        opacity: 0.75;
+      }
+
+      100% {
+        transform: scale(2.9);
+        opacity: 0;
+      }
     }
 
-    @keyframes shine {
-      0%, 60% { left: -60%; }
-      100%    { left: 130%; }
+    /* --- HERO ASIMÉTRICO --- */
+    .hero-section {
+      padding-block: clamp(3.25rem, 6vw, 5.25rem) clamp(3rem, 5vw, 4.5rem);
+      border-bottom: 1px solid var(--border-subtle);
     }
 
-    .hero-description { 
-      font-size: 1.1rem; 
-      color: #A0A0A0; 
-      max-width: 700px; 
-      margin-bottom: 25px; 
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr);
+      gap: clamp(2rem, 4vw, 3.5rem);
+      align-items: center;
     }
 
-    /* --- BOTONES CON BORDES AZULES UNIFORMES --- */
-    .btn-container { 
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 14px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5.4vw, 4.15rem);
+      font-weight: 700;
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 500;
+      color: var(--accent-soft);
+      margin-bottom: 20px;
+    }
+
+    .hero-description {
+      font-size: 1.03rem;
+      color: var(--text-secondary);
+      max-width: 58ch;
+      margin-bottom: 28px;
+    }
+
+    /* --- JERARQUÍA DE BOTONES --- */
+    .btn-group {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      align-items: center;
       gap: 12px;
-      margin-top: 10px; 
     }
 
     .btn {
-      display: inline-block;
-      padding: 10px 22px;
-      background: rgba(var(--blue-rgb), 0.04);
-      color: #FFFFFF;
-      border: 1.5px solid var(--blue); /* Borde azul para TODOS */
-      text-decoration: none;
-      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
       font-weight: 600;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 10px rgba(var(--blue-rgb), 0.15);
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition:
+        background-color 0.22s ease,
+        border-color 0.22s ease,
+        color 0.22s ease,
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
     }
 
-    .btn:hover {
-      background: var(--blue);
-      color: #0B0C10;
-      box-shadow: 0 0 22px rgba(var(--blue-rgb), 0.5);
+    .btn svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 8px 24px -8px rgba(var(--accent-rgb), 0.6);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -8px rgba(var(--accent-rgb), 0.72);
+    }
+
+    .btn-secondary {
+      background: rgba(var(--accent-rgb), 0.08);
+      border-color: rgba(var(--accent-rgb), 0.48);
+      color: var(--text-primary);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(var(--accent-rgb), 0.16);
+      border-color: var(--accent-soft);
       transform: translateY(-2px);
     }
 
-    /* --- SECCIONES Y GENERALES --- */
-    h2 { 
-      font-size: 28px; 
-      margin-bottom: 25px; 
+    .btn-ghost {
+      background: var(--bg-surface);
+      border-color: var(--border-subtle);
+      color: var(--text-secondary);
     }
 
-    .center { 
-      text-align: center; 
+    .btn-ghost:hover {
+      border-color: var(--border-strong);
+      color: var(--text-primary);
+      background: var(--bg-elevated);
+      transform: translateY(-2px);
     }
 
-    p { 
-      color: #A0A0A0; 
-      margin-bottom: 15px; 
+    .btn-whatsapp {
+      background: rgba(var(--whatsapp-rgb), 0.1);
+      border-color: rgba(var(--whatsapp-rgb), 0.45);
+      color: #86efac;
     }
 
-    /* --- TARJETAS DE PROYECTOS (GRID 2x2) --- */
-    .grid {
+    .btn-whatsapp:hover {
+      background: var(--whatsapp);
+      border-color: var(--whatsapp);
+      color: #052e16;
+      transform: translateY(-2px);
+    }
+
+    /* --- INSPECTOR / TELEMETRY PANEL (HERO DERECHA) --- */
+    .inspector-panel {
+      background: linear-gradient(165deg, rgba(17, 24, 41, 0.92), rgba(10, 14, 24, 0.96));
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.75);
+    }
+
+    .inspector-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 18px;
+      background: rgba(255, 255, 255, 0.025);
+      border-bottom: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .inspector-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+    }
+
+    .inspector-title::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.7);
+    }
+
+    .inspector-badge {
+      color: var(--status-ok-text);
+      border: 1px solid rgba(var(--status-ok-rgb), 0.35);
+      background: rgba(var(--status-ok-rgb), 0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.68rem;
+    }
+
+    .telemetry-list {
+      list-style: none;
+      padding: 10px 18px 6px;
+    }
+
+    .telemetry-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 14px;
+      padding: 11px 0;
+      border-bottom: 1px dashed rgba(148, 163, 184, 0.14);
+      font-size: 0.88rem;
+    }
+
+    .telemetry-row:last-child {
+      border-bottom: none;
+    }
+
+    .telemetry-key {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+
+    .telemetry-val {
+      font-weight: 500;
+      color: var(--text-primary);
+      text-align: right;
+    }
+
+    .telemetry-val--ok {
+      color: var(--status-ok-text);
+    }
+
+    .inspector-footer {
+      padding: 13px 18px;
+      background: rgba(var(--accent-rgb), 0.06);
+      border-top: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-soft);
+    }
+
+    /* --- SECCIONES GENERALES --- */
+    .section-block {
+      padding-block: clamp(3.5rem, 6vw, 5.25rem);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .section-index {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--text-primary);
+      line-height: 1.15;
+    }
+
+    .section-lead {
+      color: var(--text-secondary);
+      max-width: 48ch;
+      font-size: 0.96rem;
+    }
+
+    /* --- FICHAS TÉCNICAS DE PROYECTOS (GRID 2x2) --- */
+    .projects-grid {
       display: grid;
-      /* Ajustado a minmax 320px para forzar un diseño uniforme 2x2 en escritorios */
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
     }
 
-    .card {
+    .project-card {
       --mx: 50%;
       --my: 0%;
       position: relative;
       isolation: isolate;
-      background: linear-gradient(160deg, rgba(20, 24, 38, 0.9), rgba(13, 15, 24, 0.9));
-      padding: 20px;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-                  box-shadow 0.45s ease,
-                  border-color 0.45s ease;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      height: 100%;
+      background: linear-gradient(165deg, rgba(16, 22, 36, 0.94), rgba(10, 14, 24, 0.96));
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      overflow: hidden;
+      transition:
+        transform 0.4s var(--ease-out),
+        border-color 0.35s ease,
+        box-shadow 0.4s ease;
     }
 
-    /* Resplandor que sigue al cursor dentro de la tarjeta */
-    .card::before {
+    .project-card::before {
       content: "";
       position: absolute;
       inset: 0;
       z-index: -1;
       border-radius: inherit;
-      background: radial-gradient(380px circle at var(--mx) var(--my), rgba(var(--blue-rgb), 0.18), transparent 60%);
+      background: radial-gradient(380px circle at var(--mx) var(--my), rgba(var(--accent-rgb), 0.16), transparent 62%);
       opacity: 0;
-      transition: opacity 0.45s ease;
+      transition: opacity 0.35s ease;
     }
 
-    /* Borde luminoso en degradado */
-    .card::after {
+    .project-card::after {
       content: "";
       position: absolute;
       inset: 0;
       z-index: -1;
       border-radius: inherit;
       padding: 1px;
-      background: linear-gradient(135deg, rgba(96, 165, 250, 0.9), rgba(var(--blue-rgb), 0.1) 45%, rgba(129, 140, 248, 0.7));
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.8), rgba(var(--accent-rgb), 0.08) 48%, rgba(129, 140, 248, 0.6));
       -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
       -webkit-mask-composite: xor;
       mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
       opacity: 0;
-      transition: opacity 0.45s ease;
+      transition: opacity 0.35s ease;
       pointer-events: none;
     }
 
-    .card:hover {
-      transform: translateY(-8px);
+    .project-card:hover {
+      transform: translateY(-6px);
       border-color: transparent;
-      box-shadow:
-        0 18px 40px -12px rgba(var(--blue-rgb), 0.35),
-        0 0 0 1px rgba(var(--blue-rgb), 0.15),
-        0 0 45px rgba(var(--blue-rgb), 0.18);
+      box-shadow: 0 22px 44px -18px rgba(var(--accent-rgb), 0.32);
     }
 
-    .card:hover::before,
-    .card:hover::after {
+    .project-card:hover::before,
+    .project-card:hover::after {
       opacity: 1;
     }
 
-    .card img {
+    /* Contenedor de captura con relación 16:9 uniforme */
+    .card-media {
+      position: relative;
       width: 100%;
-      height: 180px;
+      aspect-ratio: 16 / 9;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #070a12;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      margin-bottom: 16px;
+    }
+
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      display: block;
       object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
-      filter: saturate(0.95) brightness(0.95);
+      transition: transform 0.55s var(--ease-out), filter 0.35s ease;
+      filter: brightness(0.95);
     }
 
-    .card:hover img {
-      transform: scale(1.05);
-      filter: saturate(1.1) brightness(1.05);
+    .project-card:hover .card-media img {
+      transform: scale(1.04);
+      filter: brightness(1.03);
     }
 
-    .card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 8px;
-      color: #FFFFFF;
+    /* Ajuste sutil para Thomas Was Alone (oculta margen exterior del editor) */
+    .card-media--crop img {
+      transform: scale(1.1);
+      object-position: 54% 58%;
     }
 
-    .card p {
-      font-size: 0.95rem;
+    .project-card:hover .card-media--crop img {
+      transform: scale(1.14);
+    }
+
+    /* Tratamiento especial para capturas verticales (Flappy Ufo) sin recorte */
+    .card-media--portrait {
+      background: #0a1420;
+    }
+
+    .card-media--portrait::before {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      background-image: var(--portrait-bg);
+      background-size: cover;
+      background-position: center;
+      filter: blur(16px) brightness(0.38) saturate(1.1);
+      transform: scale(1.12);
+    }
+
+    .card-media--portrait img {
+      position: relative;
+      z-index: 1;
+      object-fit: contain;
+    }
+
+    .project-card:hover .card-media--portrait img {
+      transform: scale(1.03);
+    }
+
+    .media-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 2;
+      padding: 4px 9px;
+      border-radius: 4px;
+      background: rgba(7, 9, 15, 0.84);
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      backdrop-filter: blur(6px);
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
       flex-grow: 1;
     }
 
-    .card a {
-      color: var(--blue);
-      text-decoration: none;
+    .card-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .card-engine {
+      color: var(--accent-soft);
+    }
+
+    .project-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.28rem;
       font-weight: 600;
-      font-size: 0.9rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      letter-spacing: -0.015em;
+    }
+
+    .project-card p {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      list-style: none;
+      margin-bottom: 18px;
+    }
+
+    .tech-tags li {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 9px;
+      border-radius: 4px;
+    }
+
+    .card-footer {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent-soft);
+      text-decoration: none;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .card-cta:hover {
+      color: var(--text-primary);
+      transform: translateX(3px);
+    }
+
+    .card-platform {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* --- ENFOQUE & STACK (BENTO 2 COLUMNAS) --- */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+      gap: clamp(1.75rem, 4vw, 3rem);
+      align-items: start;
+    }
+
+    .about-copy {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 16px;
+      margin-bottom: 24px;
+    }
+
+    .about-copy strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .focus-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .focus-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 14px 16px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+    }
+
+    .focus-code {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--accent-soft);
+      padding-top: 2px;
+    }
+
+    .focus-item strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .focus-item span {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    .stack-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+
+    .stack-panel h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+    }
+
+    .stack-groups {
+      display: grid;
+      gap: 18px;
+    }
+
+    .stack-group {
+      padding-bottom: 16px;
+      border-bottom: 1px dashed rgba(148, 163, 184, 0.15);
+    }
+
+    .stack-group:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .stack-group-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.73rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .skills-list li {
+      padding: 7px 13px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .skills-list li:hover {
+      border-color: rgba(var(--accent-rgb), 0.55);
+      transform: translateY(-2px);
+    }
+
+    /* --- CONTACTO --- */
+    .contact-section {
+      padding-block: clamp(3.5rem, 6vw, 5rem);
+    }
+
+    .contact-panel {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      padding: clamp(1.75rem, 4vw, 2.75rem);
+      background:
+        radial-gradient(600px 300px at 100% 0%, rgba(var(--accent-rgb), 0.14), transparent 65%),
+        var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+    }
+
+    .contact-copy {
+      max-width: 52ch;
+    }
+
+    .contact-copy p {
+      color: var(--text-secondary);
       margin-top: 10px;
-      display: inline-block;
-      transition: color 0.3s ease, transform 0.3s ease;
+      margin-bottom: 18px;
     }
 
-    .card a:hover {
-      color: #93C5FD;
-      transform: translateX(4px);
-      text-decoration: underline;
+    .email-row {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px 8px 14px;
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
     }
 
-    /* --- HABILIDADES --- */
-    .skills span {
-      display: inline-block;
-      background: rgba(17, 18, 23, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 8px 16px;
-      margin: 5px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      color: #E0E0E0;
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    .email-text {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: var(--text-primary);
+      word-break: break-all;
     }
 
-    .skills span:hover {
-      transform: translateY(-3px);
-      border-color: rgba(var(--blue-rgb), 0.5);
-      box-shadow: 0 6px 18px rgba(var(--blue-rgb), 0.2);
+    .copy-btn {
+      padding: 5px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--border-strong);
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      cursor: pointer;
+      transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      color: var(--text-primary);
+      border-color: var(--accent-soft);
+    }
+
+    .copy-btn.copied {
+      color: var(--status-ok-text);
+      border-color: rgba(var(--status-ok-rgb), 0.5);
+      background: rgba(var(--status-ok-rgb), 0.12);
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* --- FOOTER --- */
+    .site-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding-block: 24px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-soft);
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+
+      .hero-grid,
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .main-nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header-inner {
+        flex-wrap: wrap;
+      }
+
+      .available-tag {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .container {
+        padding-inline: 16px;
+      }
+
+      .brand-role {
+        display: none;
+      }
+
+      .btn-group .btn,
+      .contact-actions .btn {
+        width: 100%;
+      }
     }
 
     /* --- ACCESIBILIDAD: MOVIMIENTO REDUCIDO --- */
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+
+      *,
+      *::before,
+      *::after {
         animation: none !important;
         transition-duration: 0.01ms !important;
       }
-      .js .reveal { opacity: 1; transform: none; }
+
+      .js .reveal {
+        opacity: 1;
+        transform: none;
+      }
     }
   </style>
   <script>document.documentElement.classList.add('js');</script>
 </head>
+
 <body>
+  <a href="#contenido" class="skip-link">Saltar al contenido</a>
 
-  <!-- HEADER / HERO -->
-  <section class="hero-section">
-    <h1 class="reveal">Erwin Salas</h1>
-    <div class="hero-subtitle reveal" style="--delay: 0.1s">Desarrollador de videojuegos en Unity &amp; C#</div>
-    
-    <div class="available-tag reveal" style="--delay: 0.2s">
-      <span class="pulse-dot" aria-hidden="true"></span>
-      Disponible para prácticas / empleo
-    </div>
-    
-    <p class="hero-description reveal" style="--delay: 0.3s">
-      Construyo sistemas jugables, resuelvo problemas técnicos y desarrollo experiencias interactivas funcionales con foco en la arquitectura de código limpia y la optimización.
-    </p>
-    
-    <div class="btn-container reveal" style="--delay: 0.4s">
-      <a href="https://retzmor.itch.io" target="_blank" class="btn">Itch.io</a>
-      <a href="https://github.com/Retzmor?tab=repositories" target="_blank" class="btn">GitHub</a>
-      <a href="#proyectos" class="btn">Ver proyectos</a>
-      <a href="#contacto" class="btn">Contacto</a>
-    </div>
-  </section>
+  <!-- HUD HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#inicio" class="brand-mark">
+        <span class="brand-bracket">[</span>erwin.salas<span class="brand-bracket">]</span>
+        <span class="brand-role">// unity.cs</span>
+      </a>
 
-  <!-- PROYECTOS -->
-  <section id="proyectos" class="center">
-    <h2 class="reveal">Proyectos</h2>
-    <div class="grid">
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="#proyectos">01 // Proyectos</a>
+        <a href="#sobre-mi">02 // Enfoque</a>
+        <a href="#contacto">03 // Contacto</a>
+      </nav>
 
-      <div class="card reveal">
-        <img src="Imagenes/thomas.png" alt="Thomas Was Alone">
-        <h3>Thomas Was Alone</h3>
-        <p>Movimiento, físicas y control de múltiples personajes.</p>
-        <a href="https://retzmor.itch.io/thomas-was-alone" target="_blank">Ver demo en itch.io →</a>
+      <div class="available-tag">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        Disponible · Prácticas / Empleo
       </div>
-
-      <div class="card reveal" style="--delay: 0.12s">
-        <img src="Imagenes/flappy.png" alt="Flappy Ufo">
-        <h3>Flappy Ufo</h3>
-        <p>Colisiones, gestión de obstáculos y sistema de reinicio.</p>
-        <a href="https://retzmor.itch.io/flappy-bird" target="_blank">Ver demo en itch.io →</a>
-      </div>
-
-      <div class="card reveal">
-        <img src="Imagenes/plantocalypse.png" alt="Plantocalypse">
-        <h3>Plantocalypse</h3>
-        <p>Sistema de supervivencia e interacción con el entorno.</p>
-        <a href="https://retzmor.itch.io/plantocalypse" target="_blank">Ver demo en itch.io →</a>
-      </div>
-
-      <div class="card reveal" style="--delay: 0.12s">
-        <img src="Imagenes/ashes.png" alt="Ashes of Destiny">
-        <h3>Ashes of Destiny</h3>
-        <p>Movimiento de personaje, combate básico y estructura del juego.</p>
-        <a href="https://retzmor.itch.io/ashes-of-destiny" target="_blank">Ver demo en itch.io →</a>
-      </div>
-
     </div>
-  </section>
+  </header>
 
-  <!-- SOBRE MI -->
-  <section class="center">
-    <h2 class="reveal">Sobre mí</h2>
-    <p class="reveal" style="--delay: 0.1s">Soy desarrollador de videojuegos en formación con enfoque técnico en Unity y C#. Me interesa la resolución de problemas lógicos, el diseño de mecánicas sólidas y la creación de prototipos funcionales.</p>
-  </section>
+  <main id="contenido">
+    <!-- HERO ASIMÉTRICO -->
+    <section id="inicio" class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-main">
+          <div class="eyebrow reveal">Portafolio Game Dev · Unity &amp; C#</div>
+          <h1 class="reveal" style="--delay: 0.06s">Erwin Salas</h1>
+          <p class="hero-subtitle reveal" style="--delay: 0.12s">Desarrollador de videojuegos en Unity &amp; C#</p>
+          <p class="hero-description reveal" style="--delay: 0.18s">
+            Construyo sistemas jugables, resuelvo problemas técnicos y desarrollo experiencias interactivas funcionales
+            con foco en la arquitectura de código limpia y la optimización.
+          </p>
 
-  <!-- HABILIDADES -->
-  <section class="center">
-    <h2 class="reveal">Habilidades Técnicas</h2>
-    <div class="skills reveal" style="--delay: 0.1s">
-      <span>Unity (C#)</span>
-      <span>Lógica de Programación</span>
-      <span>Físicas &amp; Colisiones</span>
-      <span>Debugging</span>
-      <span>Game Testing</span>
-      <span>Git / GitHub</span>
+          <div class="btn-group reveal" style="--delay: 0.24s">
+            <a href="#proyectos" class="btn btn-primary">
+              Ver proyectos
+              <span aria-hidden="true">↓</span>
+            </a>
+            <a href="#contacto" class="btn btn-secondary">Contacto</a>
+            <a href="https://retzmor.itch.io" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="6" width="20" height="12" rx="4" />
+                <path d="M6 12h4M8 10v4M15 11h.01M18 13h.01" />
+              </svg>
+              Itch.io
+            </a>
+            <a href="https://github.com/Retzmor?tab=repositories" target="_blank" rel="noopener noreferrer"
+              class="btn btn-ghost">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <aside class="inspector-panel reveal" style="--delay: 0.18s" aria-label="Ficha técnica del desarrollador">
+          <div class="inspector-bar">
+            <span class="inspector-title">DEV_PROFILE.ASSET</span>
+            <span class="inspector-badge">READY</span>
+          </div>
+          <ul class="telemetry-list">
+            <li class="telemetry-row">
+              <span class="telemetry-key">engine.primary</span>
+              <span class="telemetry-val">Unity (2D &amp; 3D)</span>
+            </li>
+            <li class="telemetry-row">
+              <span class="telemetry-key">language.core</span>
+              <span class="telemetry-val">C#</span>
+            </li>
+            <li class="telemetry-row">
+              <span class="telemetry-key">education.sena</span>
+              <span class="telemetry-val">Videojuegos y Entornos Interactivos</span>
+            </li>
+            <li class="telemetry-row">
+              <span class="telemetry-key">playable.builds</span>
+              <span class="telemetry-val">4 demos en itch.io</span>
+            </li>
+            <li class="telemetry-row">
+              <span class="telemetry-key">status.work</span>
+              <span class="telemetry-val telemetry-val--ok">Disponible para prácticas / empleo</span>
+            </li>
+          </ul>
+          <div class="inspector-footer">
+            focus: mecánicas · físicas &amp; colisiones · debugging
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 01 // PROYECTOS -->
+    <section id="proyectos" class="section-block">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <span class="section-index">01 // PROYECTOS</span>
+            <h2>Demos jugables</h2>
+          </div>
+          <p class="section-lead">
+            Cuatro prototipos desarrollados en Unity y publicados en itch.io para validar físicas, control de personaje,
+            supervivencia y combate.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <div class="card-media card-media--crop">
+              <span class="media-badge">2D · PLATFORMER</span>
+              <img src="Imagenes/thomas.png" alt="Captura del juego Thomas Was Alone en Unity">
+            </div>
+            <div class="card-body">
+              <div class="card-meta-row">
+                <span class="card-engine">UNITY 2D · C#</span>
+                <span>PRJ_01</span>
+              </div>
+              <h3>Thomas Was Alone</h3>
+              <p>Movimiento, físicas y control de múltiples personajes.</p>
+              <ul class="tech-tags" aria-label="Sistemas implementados">
+                <li>Físicas 2D</li>
+                <li>Multi-personaje</li>
+                <li>Plataformas</li>
+              </ul>
+              <div class="card-footer">
+                <a href="https://retzmor.itch.io/thomas-was-alone" target="_blank" rel="noopener noreferrer"
+                  class="card-cta">
+                  Ver demo en itch.io <span aria-hidden="true">→</span>
+                </a>
+                <span class="card-platform">WEB / BUILD</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" style="--delay: 0.08s">
+            <div class="card-media card-media--portrait" style="--portrait-bg: url('Imagenes/flappy.png');">
+              <span class="media-badge">2D · ARCADE</span>
+              <img src="Imagenes/flappy.png" alt="Captura del juego Flappy Ufo">
+            </div>
+            <div class="card-body">
+              <div class="card-meta-row">
+                <span class="card-engine">UNITY 2D · C#</span>
+                <span>PRJ_02</span>
+              </div>
+              <h3>Flappy Ufo</h3>
+              <p>Colisiones, gestión de obstáculos y sistema de reinicio.</p>
+              <ul class="tech-tags" aria-label="Sistemas implementados">
+                <li>Colisiones 2D</li>
+                <li>Obstáculos</li>
+                <li>Score &amp; Reinicio</li>
+              </ul>
+              <div class="card-footer">
+                <a href="https://retzmor.itch.io/flappy-bird" target="_blank" rel="noopener noreferrer"
+                  class="card-cta">
+                  Ver demo en itch.io <span aria-hidden="true">→</span>
+                </a>
+                <span class="card-platform">WEB / BUILD</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="card-media">
+              <span class="media-badge">2D · SURVIVAL</span>
+              <img src="Imagenes/plantocalypse.png" alt="Captura del juego Plantocalypse">
+            </div>
+            <div class="card-body">
+              <div class="card-meta-row">
+                <span class="card-engine">UNITY 2D · C#</span>
+                <span>PRJ_03</span>
+              </div>
+              <h3>Plantocalypse</h3>
+              <p>Sistema de supervivencia e interacción con el entorno.</p>
+              <ul class="tech-tags" aria-label="Sistemas implementados">
+                <li>Supervivencia</li>
+                <li>Interacción</li>
+                <li>UI / HUD</li>
+              </ul>
+              <div class="card-footer">
+                <a href="https://retzmor.itch.io/plantocalypse" target="_blank" rel="noopener noreferrer"
+                  class="card-cta">
+                  Ver demo en itch.io <span aria-hidden="true">→</span>
+                </a>
+                <span class="card-platform">WEB / BUILD</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" style="--delay: 0.08s">
+            <div class="card-media">
+              <span class="media-badge">3D · ACTION</span>
+              <img src="Imagenes/ashes.png" alt="Captura del juego Ashes of Destiny">
+            </div>
+            <div class="card-body">
+              <div class="card-meta-row">
+                <span class="card-engine">UNITY 3D · C#</span>
+                <span>PRJ_04</span>
+              </div>
+              <h3>Ashes of Destiny</h3>
+              <p>Movimiento de personaje, combate básico y estructura del juego.</p>
+              <ul class="tech-tags" aria-label="Sistemas implementados">
+                <li>Control 3D</li>
+                <li>Combate básico</li>
+                <li>Estructura</li>
+              </ul>
+              <div class="card-footer">
+                <a href="https://retzmor.itch.io/ashes-of-destiny" target="_blank" rel="noopener noreferrer"
+                  class="card-cta">
+                  Ver demo en itch.io <span aria-hidden="true">→</span>
+                </a>
+                <span class="card-platform">WEB / BUILD</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 // ENFOQUE & STACK -->
+    <section id="sobre-mi" class="section-block">
+      <div class="container profile-grid">
+        <div class="reveal">
+          <span class="section-index">02 // ENFOQUE</span>
+          <h2>Sobre mí</h2>
+          <p class="about-copy">
+            Soy estudiante de <strong>Desarrollo de Videojuegos y Entornos Interactivos en el SENA</strong> y
+            desarrollador de videojuegos en formación con enfoque técnico en <strong>Unity y C#</strong>. Me interesa la
+            resolución de problemas lógicos, el diseño de mecánicas sólidas y la creación de prototipos funcionales.
+          </p>
+
+          <ul class="focus-list">
+            <li class="focus-item">
+              <span class="focus-code">[01]</span>
+              <div>
+                <strong>Arquitectura limpia en C#</strong>
+                <span>Componentes desacoplados y legibles orientados a escalar mecánicas sin fricción.</span>
+              </div>
+            </li>
+            <li class="focus-item">
+              <span class="focus-code">[02]</span>
+              <div>
+                <strong>Sistemas jugables y físicas</strong>
+                <span>Control de personaje, detección de colisiones y respuesta consistente al jugador.</span>
+              </div>
+            </li>
+            <li class="focus-item">
+              <span class="focus-code">[03]</span>
+              <div>
+                <strong>Debugging y validación</strong>
+                <span>Pruebas funcionales continuas para detectar fallos de lógica y estabilizar builds.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <aside class="stack-panel reveal" style="--delay: 0.1s" aria-labelledby="stack-heading">
+          <span class="section-index">STACK // TÉCNICO</span>
+          <h3 id="stack-heading">Habilidades Técnicas</h3>
+
+          <div class="stack-groups">
+            <div class="stack-group">
+              <span class="stack-group-label">Motor &amp; Lenguaje</span>
+              <ul class="skills-list">
+                <li>Unity (C#)</li>
+              </ul>
+            </div>
+
+            <div class="stack-group">
+              <span class="stack-group-label">Sistemas &amp; Gameplay</span>
+              <ul class="skills-list">
+                <li>Lógica de Programación</li>
+                <li>Físicas &amp; Colisiones</li>
+              </ul>
+            </div>
+
+            <div class="stack-group">
+              <span class="stack-group-label">Calidad &amp; Flujo</span>
+              <ul class="skills-list">
+                <li>Debugging</li>
+                <li>Game Testing</li>
+                <li>Git / GitHub</li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 03 // CONTACTO -->
+    <section id="contacto" class="contact-section">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div class="contact-copy">
+            <span class="section-index">03 // CONTACTO</span>
+            <h2>¿Tienes una oportunidad o vacante? Hablemos.</h2>
+            <p>Estoy disponible para prácticas profesionales o posiciones junior en desarrollo de videojuegos con Unity
+              y C#.</p>
+
+            <div class="email-row">
+              <span class="email-text" id="email-address">erwinsalas1278@gmail.com</span>
+              <button type="button" class="copy-btn" id="copy-email-btn"
+                aria-label="Copiar correo electrónico al portapapeles">
+                Copiar
+              </button>
+            </div>
+            <span id="copy-status" class="sr-only" aria-live="polite"></span>
+          </div>
+
+          <div class="contact-actions">
+            <a href="mailto:erwinsalas1278@gmail.com" class="btn btn-primary">Enviar correo</a>
+            <a href="https://wa.me/573125313724" target="_blank" rel="noopener noreferrer"
+              class="btn btn-whatsapp">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>Erwin Salas · Unity &amp; C# Game Developer</span>
+      <div class="footer-links">
+        <a href="https://retzmor.itch.io" target="_blank" rel="noopener noreferrer">Itch.io</a>
+        <a href="https://github.com/Retzmor?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="mailto:erwinsalas1278@gmail.com">Email</a>
+      </div>
     </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section id="contacto" class="center">
-    <h2 class="reveal">Contacto</h2>
-    <p class="reveal" style="--delay: 0.1s">¿Tienes una oportunidad o vacante? Hablemos.</p>
-    <p class="reveal" style="--delay: 0.15s">Email: <strong>erwinsalas1278@gmail.com</strong></p>
-    
-    <div class="btn-container reveal" style="justify-content: center; margin-top: 20px; --delay: 0.25s">
-      <a href="mailto:erwinsalas1278@gmail.com" class="btn">Enviar correo</a>
-      <a href="https://wa.me/573125313724" target="_blank" class="btn" style="border-color: #25D366;">WhatsApp</a>
-    </div>
-  </section>
+  </footer>
 
   <script>
-    // Animaciones de entrada al hacer scroll
     (function () {
       var items = document.querySelectorAll('.reveal');
 
@@ -484,21 +1428,60 @@
               io.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
 
         items.forEach(function (el) { io.observe(el); });
       }
 
-      // Resplandor de las tarjetas siguiendo el cursor
-      document.querySelectorAll('.card').forEach(function (card) {
+      // Resplandor siguiendo al cursor en las tarjetas de proyecto
+      document.querySelectorAll('.project-card').forEach(function (card) {
         card.addEventListener('mousemove', function (e) {
           var r = card.getBoundingClientRect();
           card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
           card.style.setProperty('--my', (e.clientY - r.top) + 'px');
         });
       });
+
+      // Copiar correo al portapapeles con confirmación accesible
+      var copyBtn = document.getElementById('copy-email-btn');
+      var emailEl = document.getElementById('email-address');
+      var statusEl = document.getElementById('copy-status');
+
+      if (copyBtn && emailEl) {
+        copyBtn.addEventListener('click', function () {
+          var email = emailEl.textContent.trim();
+          var markCopied = function () {
+            copyBtn.textContent = '✓ Copiado';
+            copyBtn.classList.add('copied');
+            if (statusEl) statusEl.textContent = 'Correo copiado al portapapeles';
+            window.setTimeout(function () {
+              copyBtn.textContent = 'Copiar';
+              copyBtn.classList.remove('copied');
+              if (statusEl) statusEl.textContent = '';
+            }, 2200);
+          };
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(email).then(markCopied).catch(function () { });
+          } else {
+            var temp = document.createElement('textarea');
+            temp.value = email;
+            temp.setAttribute('readonly', '');
+            temp.style.position = 'absolute';
+            temp.style.left = '-9999px';
+            document.body.appendChild(temp);
+            temp.select();
+            try {
+              document.execCommand('copy');
+              markCopied();
+            } finally {
+              document.body.removeChild(temp);
+            }
+          }
+        });
+      }
     })();
   </script>
-
 </body>
+
 </html>
