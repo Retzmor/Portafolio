@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Portafolio de Erwin Salas, estudiante de Desarrollo de Videojuegos y Entornos Interactivos en el SENA y desarrollador en Unity y C#.">
-  <title>Erwin Salas — Portafolio Game Dev (Unity &amp; C#)</title>
+  <meta name="description" id="meta-description"
+    content="Portafolio de Erwin Salas, Desarrollador de Software y Videojuegos (React, C# & Unity). Aplicaciones web, integraciones con IA y videojuegos disponibles para proyectos freelance y posiciones remotas.">
+  <title>Erwin Salas — Desarrollador de Software &amp; Videojuegos (React, C# &amp; Unity)</title>
 
   <!-- Favicon: gamepad minimalista en azul neón sobre fondo circular oscuro (SVG inline) -->
   <link rel="icon" type="image/svg+xml"
@@ -118,7 +118,7 @@
       outline-offset: 3px;
     }
 
-    :is(.btn, .copy-btn):focus-visible {
+    :is(.btn, .copy-btn, .lang-btn, .tab-btn):focus-visible {
       outline: 2px solid var(--accent-soft);
       outline-offset: 2px;
       box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.28);
@@ -240,6 +240,46 @@
       color: var(--text-primary);
     }
 
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* --- SELECTOR DE IDIOMA ES / EN --- */
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px;
+      border-radius: 999px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .lang-btn {
+      appearance: none;
+      background: transparent;
+      border: none;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .lang-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .lang-btn.is-active {
+      background: rgba(var(--accent-rgb), 0.18);
+      color: var(--accent-soft);
+    }
+
     /* --- ETIQUETA DISPONIBLE --- */
     .available-tag {
       display: inline-flex;
@@ -251,7 +291,7 @@
       border: 1px solid rgba(var(--status-ok-rgb), 0.34);
       color: var(--status-ok-text);
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 500;
       white-space: nowrap;
     }
@@ -500,6 +540,7 @@
       font-family: var(--font-mono);
       font-size: 0.78rem;
       color: var(--text-secondary);
+      white-space: nowrap;
     }
 
     .telemetry-val {
@@ -533,7 +574,7 @@
       align-items: flex-end;
       justify-content: space-between;
       gap: 16px;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
     .section-index {
@@ -557,8 +598,113 @@
 
     .section-lead {
       color: var(--text-secondary);
-      max-width: 48ch;
+      max-width: 50ch;
       font-size: 0.96rem;
+    }
+
+    /* --- PESTAÑAS DE CATEGORÍAS DE PROYECTOS --- */
+    .project-tabs {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 5px;
+      margin-bottom: 32px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+    }
+
+    .tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: transparent;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .tab-btn.is-active {
+      background: rgba(var(--accent-rgb), 0.14);
+      border-color: rgba(var(--accent-rgb), 0.36);
+      color: var(--accent-soft);
+    }
+
+    .tab-count {
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .tab-btn.is-active .tab-count {
+      background: rgba(var(--accent-rgb), 0.2);
+      color: var(--text-primary);
+    }
+
+    .category-group {
+      margin-bottom: 44px;
+    }
+
+    .category-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .category-group[hidden] {
+      display: none;
+    }
+
+    .category-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 14px;
+      margin-bottom: 22px;
+      border-bottom: 1px dashed rgba(148, 163, 184, 0.18);
+    }
+
+    .category-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .category-code {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent-soft);
+      background: rgba(var(--accent-rgb), 0.1);
+      border: 1px solid rgba(var(--accent-rgb), 0.28);
+      padding: 3px 9px;
+      border-radius: 4px;
+    }
+
+    .category-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.015em;
+    }
+
+    .category-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--text-muted);
     }
 
     /* --- FICHAS TÉCNICAS DE PROYECTOS (GRID 2x2) --- */
@@ -625,7 +771,7 @@
       opacity: 1;
     }
 
-    /* Contenedor de captura con relación 16:9 uniforme */
+    /* Contenedor de captura / preview con relación 16:9 uniforme */
     .card-media {
       position: relative;
       width: 100%;
@@ -648,6 +794,18 @@
 
     .project-card:hover .card-media img {
       transform: scale(1.04);
+      filter: brightness(1.03);
+    }
+
+    /* Capturas de aplicaciones Web & IA: encuadre superior y zoom sutil en hover */
+    .card-media--web img {
+      object-fit: cover;
+      object-position: top;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .project-card:hover .card-media--web img {
+      transform: scale(1.05);
       filter: brightness(1.03);
     }
 
@@ -763,17 +921,25 @@
       padding-top: 14px;
       border-top: 1px solid var(--border-subtle);
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
     }
 
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+    }
+
     .card-cta {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       font-family: var(--font-mono);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--accent-soft);
       text-decoration: none;
@@ -785,9 +951,37 @@
       transform: translateX(3px);
     }
 
+    .card-repo {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 4px 9px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .card-repo svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .card-repo:hover {
+      color: var(--text-primary);
+      border-color: var(--border-strong);
+      background: var(--bg-elevated);
+    }
+
     .card-platform {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
     }
 
@@ -929,7 +1123,7 @@
     }
 
     .contact-copy {
-      max-width: 52ch;
+      max-width: 56ch;
     }
 
     .contact-copy p {
@@ -1019,8 +1213,7 @@
     }
 
     /* --- RESPONSIVE --- */
-    @media (max-width: 900px) {
-
+    @media (max-width: 960px) {
       .hero-grid,
       .profile-grid {
         grid-template-columns: 1fr;
@@ -1044,15 +1237,29 @@
         font-size: 0.7rem;
         padding: 5px 10px;
       }
+
+      .project-tabs {
+        width: 100%;
+      }
+
+      .tab-btn {
+        flex: 1 1 auto;
+        justify-content: center;
+      }
     }
 
-    @media (max-width: 440px) {
+    @media (max-width: 480px) {
       .container {
         padding-inline: 16px;
       }
 
       .brand-role {
         display: none;
+      }
+
+      .header-controls {
+        width: 100%;
+        justify-content: space-between;
       }
 
       .btn-group .btn,
@@ -1063,7 +1270,6 @@
 
     /* --- ACCESIBILIDAD: MOVIMIENTO REDUCIDO --- */
     @media (prefers-reduced-motion: reduce) {
-
       *,
       *::before,
       *::after {
@@ -1081,25 +1287,32 @@
 </head>
 
 <body>
-  <a href="#contenido" class="skip-link">Saltar al contenido</a>
+  <a href="#contenido" class="skip-link" data-i18n="skip">Saltar al contenido</a>
 
   <!-- HUD HEADER -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="#inicio" class="brand-mark">
         <span class="brand-bracket">[</span>erwin.salas<span class="brand-bracket">]</span>
-        <span class="brand-role">// unity.cs</span>
+        <span class="brand-role">// react.cs</span>
       </a>
 
-      <nav class="main-nav" aria-label="Navegación principal">
-        <a href="#proyectos">01 // Proyectos</a>
-        <a href="#sobre-mi">02 // Enfoque</a>
-        <a href="#contacto">03 // Contacto</a>
+      <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+        <a href="#proyectos" data-i18n="nav.projects">01 // Proyectos</a>
+        <a href="#sobre-mi" data-i18n="nav.about">02 // Enfoque</a>
+        <a href="#contacto" data-i18n="nav.contact">03 // Contacto</a>
       </nav>
 
-      <div class="available-tag">
-        <span class="pulse-dot" aria-hidden="true"></span>
-        Disponible · Prácticas / Empleo
+      <div class="header-controls">
+        <div class="lang-toggle" role="group" id="lang-toggle" aria-label="Selector de idioma">
+          <button type="button" class="lang-btn is-active" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+
+        <div class="available-tag">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <span data-i18n="header.available">Disponible · Freelance &amp; Remoto</span>
+        </div>
       </div>
     </div>
   </header>
@@ -1109,20 +1322,22 @@
     <section id="inicio" class="hero-section">
       <div class="container hero-grid">
         <div class="hero-main">
-          <div class="eyebrow reveal">Portafolio Game Dev · Unity &amp; C#</div>
+          <div class="eyebrow reveal" data-i18n="hero.eyebrow">Portafolio Técnico · Web, IA &amp; Game Dev</div>
           <h1 class="reveal" style="--delay: 0.06s">Erwin Salas</h1>
-          <p class="hero-subtitle reveal" style="--delay: 0.12s">Desarrollador de videojuegos en Unity &amp; C#</p>
-          <p class="hero-description reveal" style="--delay: 0.18s">
-            Construyo sistemas jugables, resuelvo problemas técnicos y desarrollo experiencias interactivas funcionales
-            con foco en la arquitectura de código limpia y la optimización.
+          <p class="hero-subtitle reveal" style="--delay: 0.12s" data-i18n="hero.subtitle">
+            Desarrollador de Software &amp; Videojuegos (React, C# &amp; Unity)
+          </p>
+          <p class="hero-description reveal" style="--delay: 0.18s" data-i18n="hero.description">
+            Diseño y construyo aplicaciones web modernas en React con integración de IA, junto a sistemas y videojuegos en
+            Unity &amp; C#, con foco en arquitectura limpia, rendimiento y producto listo para producción.
           </p>
 
           <div class="btn-group reveal" style="--delay: 0.24s">
             <a href="#proyectos" class="btn btn-primary">
-              Ver proyectos
+              <span data-i18n="hero.ctaProjects">Ver proyectos</span>
               <span aria-hidden="true">↓</span>
             </a>
-            <a href="#contacto" class="btn btn-secondary">Contacto</a>
+            <a href="#contacto" class="btn btn-secondary" data-i18n="hero.ctaContact">Contacto</a>
             <a href="https://retzmor.itch.io" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" aria-hidden="true">
@@ -1143,35 +1358,38 @@
           </div>
         </div>
 
-        <aside class="inspector-panel reveal" style="--delay: 0.18s" aria-label="Ficha técnica del desarrollador">
+        <aside class="inspector-panel reveal" style="--delay: 0.18s" id="inspector-panel"
+          aria-label="Ficha técnica del desarrollador">
           <div class="inspector-bar">
             <span class="inspector-title">DEV_PROFILE.ASSET</span>
             <span class="inspector-badge">READY</span>
           </div>
           <ul class="telemetry-list">
             <li class="telemetry-row">
-              <span class="telemetry-key">engine.primary</span>
-              <span class="telemetry-val">Unity (2D &amp; 3D)</span>
+              <span class="telemetry-key">stack.web_ai</span>
+              <span class="telemetry-val">React · JS (ES6+) · Tailwind · Node.js</span>
             </li>
             <li class="telemetry-row">
-              <span class="telemetry-key">language.core</span>
-              <span class="telemetry-val">C#</span>
+              <span class="telemetry-key">engine.game</span>
+              <span class="telemetry-val">Unity (2D &amp; 3D) · C#</span>
             </li>
             <li class="telemetry-row">
-              <span class="telemetry-key">education.sena</span>
-              <span class="telemetry-val">Videojuegos y Entornos Interactivos</span>
+              <span class="telemetry-key">ai.architecture</span>
+              <span class="telemetry-val" data-i18n="inspector.aiVal">Modelos IA · APIs REST · Serverless</span>
             </li>
             <li class="telemetry-row">
-              <span class="telemetry-key">playable.builds</span>
-              <span class="telemetry-val">4 demos en itch.io</span>
+              <span class="telemetry-key">shipped.builds</span>
+              <span class="telemetry-val" data-i18n="inspector.buildsVal">4 Apps Web &amp; IA · 4 Demos Unity</span>
             </li>
             <li class="telemetry-row">
               <span class="telemetry-key">status.work</span>
-              <span class="telemetry-val telemetry-val--ok">Disponible para prácticas / empleo</span>
+              <span class="telemetry-val telemetry-val--ok" data-i18n="inspector.statusVal">
+                Disponible para proyectos freelance y posiciones remotas
+              </span>
             </li>
           </ul>
-          <div class="inspector-footer">
-            focus: mecánicas · físicas &amp; colisiones · debugging
+          <div class="inspector-footer" data-i18n="inspector.footer">
+            focus: producto web · integración IA · sistemas Unity
           </div>
         </aside>
       </div>
@@ -1182,123 +1400,374 @@
       <div class="container">
         <div class="section-header reveal">
           <div>
-            <span class="section-index">01 // PROYECTOS</span>
-            <h2>Demos jugables</h2>
+            <span class="section-index" data-i18n="projects.index">01 // PROYECTOS</span>
+            <h2 data-i18n="projects.heading">Productos Web, IA &amp; Videojuegos</h2>
           </div>
-          <p class="section-lead">
-            Cuatro prototipos desarrollados en Unity y publicados en itch.io para validar físicas, control de personaje,
-            supervivencia y combate.
+          <p class="section-lead" data-i18n="projects.lead">
+            Aplicaciones web en producción con APIs e inteligencia artificial, junto a cuatro prototipos jugables en
+            Unity &amp; C# con código fuente abierto.
           </p>
         </div>
 
-        <div class="projects-grid">
-          <article class="project-card reveal">
-            <div class="card-media card-media--crop">
-              <span class="media-badge">2D · PLATFORMER</span>
-              <img src="Imagenes/thomas.png" alt="Captura del juego Thomas Was Alone en Unity">
-            </div>
-            <div class="card-body">
-              <div class="card-meta-row">
-                <span class="card-engine">UNITY 2D · C#</span>
-                <span>PRJ_01</span>
-              </div>
-              <h3>Thomas Was Alone</h3>
-              <p>Movimiento, físicas y control de múltiples personajes.</p>
-              <ul class="tech-tags" aria-label="Sistemas implementados">
-                <li>Físicas 2D</li>
-                <li>Multi-personaje</li>
-                <li>Plataformas</li>
-              </ul>
-              <div class="card-footer">
-                <a href="https://retzmor.itch.io/thomas-was-alone" target="_blank" rel="noopener noreferrer"
-                  class="card-cta">
-                  Ver demo en itch.io <span aria-hidden="true">→</span>
-                </a>
-                <span class="card-platform">WEB / BUILD</span>
-              </div>
-            </div>
-          </article>
+        <div class="project-tabs reveal" role="tablist" id="project-tabs" aria-label="Filtrar proyectos por categoría">
+          <button type="button" class="tab-btn is-active" role="tab" aria-selected="true" data-filter="all">
+            <span data-i18n="tabs.all">Todos</span>
+            <span class="tab-count">8</span>
+          </button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-filter="web">
+            <span data-i18n="tabs.web">Web &amp; IA</span>
+            <span class="tab-count">4</span>
+          </button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-filter="unity">
+            <span data-i18n="tabs.unity">Unity &amp; C#</span>
+            <span class="tab-count">4</span>
+          </button>
+        </div>
 
-          <article class="project-card reveal" style="--delay: 0.08s">
-            <div class="card-media card-media--portrait" style="--portrait-bg: url('Imagenes/flappy.png');">
-              <span class="media-badge">2D · ARCADE</span>
-              <img src="Imagenes/flappy.png" alt="Captura del juego Flappy Ufo">
+        <!-- CATEGORÍA A — APLICACIONES WEB & IA -->
+        <div class="category-group" data-category="web">
+          <div class="category-header reveal">
+            <div class="category-title-wrap">
+              <span class="category-code" data-i18n="catA.code">CAT_A</span>
+              <h3 class="category-title" data-i18n="catA.title">Aplicaciones Web &amp; IA</h3>
             </div>
-            <div class="card-body">
-              <div class="card-meta-row">
-                <span class="card-engine">UNITY 2D · C#</span>
-                <span>PRJ_02</span>
-              </div>
-              <h3>Flappy Ufo</h3>
-              <p>Colisiones, gestión de obstáculos y sistema de reinicio.</p>
-              <ul class="tech-tags" aria-label="Sistemas implementados">
-                <li>Colisiones 2D</li>
-                <li>Obstáculos</li>
-                <li>Score &amp; Reinicio</li>
-              </ul>
-              <div class="card-footer">
-                <a href="https://retzmor.itch.io/flappy-bird" target="_blank" rel="noopener noreferrer"
-                  class="card-cta">
-                  Ver demo en itch.io <span aria-hidden="true">→</span>
-                </a>
-                <span class="card-platform">WEB / BUILD</span>
-              </div>
-            </div>
-          </article>
+            <span class="category-subtitle" data-i18n="catA.subtitle">REACT · SERVERLESS · APIS · IA</span>
+          </div>
 
-          <article class="project-card reveal">
-            <div class="card-media">
-              <span class="media-badge">2D · SURVIVAL</span>
-              <img src="Imagenes/plantocalypse.png" alt="Captura del juego Plantocalypse">
-            </div>
-            <div class="card-body">
-              <div class="card-meta-row">
-                <span class="card-engine">UNITY 2D · C#</span>
-                <span>PRJ_03</span>
+          <div class="projects-grid">
+            <!-- WEB_01: ¿Qué Veo Hoy? -->
+            <article class="project-card reveal">
+              <div class="card-media card-media--web">
+                <span class="media-badge" data-i18n="web1.badge">WEB · API &amp; SERVERLESS</span>
+                <img src="Imagenes/queveohoy.png" alt="Captura de la aplicación web ¿Qué Veo Hoy?">
               </div>
-              <h3>Plantocalypse</h3>
-              <p>Sistema de supervivencia e interacción con el entorno.</p>
-              <ul class="tech-tags" aria-label="Sistemas implementados">
-                <li>Supervivencia</li>
-                <li>Interacción</li>
-                <li>UI / HUD</li>
-              </ul>
-              <div class="card-footer">
-                <a href="https://retzmor.itch.io/plantocalypse" target="_blank" rel="noopener noreferrer"
-                  class="card-cta">
-                  Ver demo en itch.io <span aria-hidden="true">→</span>
-                </a>
-                <span class="card-platform">WEB / BUILD</span>
+              <div class="card-body">
+                <div class="card-meta-row">
+                  <span class="card-engine">REACT · YOUTUBE API V3</span>
+                  <span>WEB_01</span>
+                </div>
+                <h3 data-i18n="web1.title">¿Qué Veo Hoy?</h3>
+                <p data-i18n="web1.desc">
+                  Recomendador inteligente con YouTube Data API v3, caché optimizada y funciones serverless.
+                </p>
+                <ul class="tech-tags" aria-label="Tecnologías implementadas">
+                  <li>YouTube Data API v3</li>
+                  <li>Serverless</li>
+                  <li data-i18n="web1.tag3">Caché optimizada</li>
+                </ul>
+                <div class="card-footer">
+                  <div class="card-actions">
+                    <a href="https://queveohoy-sigma.vercel.app" target="_blank" rel="noopener noreferrer"
+                      class="card-cta">
+                      <span data-i18n="cta.live">Ver app en vivo</span> <span aria-hidden="true">→</span>
+                    </a>
+                    <a href="https://github.com/Retzmor/Que_veo_hoy" target="_blank" rel="noopener noreferrer"
+                      class="card-repo">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <path
+                          d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                      </svg>
+                      <span data-i18n="cta.repo">Repositorio</span>
+                    </a>
+                  </div>
+                  <span class="card-platform">VERCEL</span>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
 
-          <article class="project-card reveal" style="--delay: 0.08s">
-            <div class="card-media">
-              <span class="media-badge">3D · ACTION</span>
-              <img src="Imagenes/ashes.png" alt="Captura del juego Ashes of Destiny">
-            </div>
-            <div class="card-body">
-              <div class="card-meta-row">
-                <span class="card-engine">UNITY 3D · C#</span>
-                <span>PRJ_04</span>
+            <!-- WEB_02: ComparaTech Colombia -->
+            <article class="project-card reveal" style="--delay: 0.08s">
+              <div class="card-media card-media--web">
+                <span class="media-badge" data-i18n="web2.badge">WEB · COMPARADOR &amp; CRO</span>
+                <img src="Imagenes/comparatech.png" alt="Captura de la aplicación web ComparaTech Colombia">
               </div>
-              <h3>Ashes of Destiny</h3>
-              <p>Movimiento de personaje, combate básico y estructura del juego.</p>
-              <ul class="tech-tags" aria-label="Sistemas implementados">
-                <li>Control 3D</li>
-                <li>Combate básico</li>
-                <li>Estructura</li>
-              </ul>
-              <div class="card-footer">
-                <a href="https://retzmor.itch.io/ashes-of-destiny" target="_blank" rel="noopener noreferrer"
-                  class="card-cta">
-                  Ver demo en itch.io <span aria-hidden="true">→</span>
-                </a>
-                <span class="card-platform">WEB / BUILD</span>
+              <div class="card-body">
+                <div class="card-meta-row">
+                  <span class="card-engine" data-i18n="web2.engine">JAVASCRIPT · CONVERSIÓN</span>
+                  <span>WEB_02</span>
+                </div>
+                <h3>ComparaTech Colombia</h3>
+                <p data-i18n="web2.desc">
+                  Comparador de portátiles orientado a conversión y afiliados con filtrado por perfil técnico y precios.
+                </p>
+                <ul class="tech-tags" aria-label="Tecnologías implementadas">
+                  <li>JavaScript (ES6+)</li>
+                  <li data-i18n="web2.tag2">Comparativa Specs</li>
+                  <li data-i18n="web2.tag3">Afiliados &amp; CRO</li>
+                </ul>
+                <div class="card-footer">
+                  <div class="card-actions">
+                    <a href="https://paginaportatiles.vercel.app" target="_blank" rel="noopener noreferrer"
+                      class="card-cta">
+                      <span data-i18n="cta.live">Ver app en vivo</span> <span aria-hidden="true">→</span>
+                    </a>
+                    <a href="https://github.com/Retzmor/PAGINAPORTATILES" target="_blank" rel="noopener noreferrer"
+                      class="card-repo">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <path
+                          d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                      </svg>
+                      <span data-i18n="cta.repo">Repositorio</span>
+                    </a>
+                  </div>
+                  <span class="card-platform">VERCEL</span>
+                </div>
               </div>
+            </article>
+
+            <!-- WEB_03: Calculadora de Horas Extras -->
+            <article class="project-card reveal">
+              <div class="card-media card-media--web">
+                <span class="media-badge" data-i18n="web3.badge">WEB · UTILIDAD &amp; SEO</span>
+                <img src="Imagenes/calculadora.png" alt="Captura de la aplicación web Calculadora de Horas Extras">
+              </div>
+              <div class="card-body">
+                <div class="card-meta-row">
+                  <span class="card-engine" data-i18n="web3.engine">REACT · NORMATIVA LABORAL</span>
+                  <span>WEB_03</span>
+                </div>
+                <h3 data-i18n="web3.title">Calculadora de Horas Extras</h3>
+                <p data-i18n="web3.desc">
+                  Utilidad laboral indexada en Google con cálculos normativos de recargos y horas extras en tiempo real.
+                </p>
+                <ul class="tech-tags" aria-label="Tecnologías implementadas">
+                  <li data-i18n="web3.tag1">Cálculo en tiempo real</li>
+                  <li data-i18n="web3.tag2">SEO Indexado</li>
+                  <li>UI / UX</li>
+                </ul>
+                <div class="card-footer">
+                  <div class="card-actions">
+                    <a href="https://calculadora-horas-extras-colombia.vercel.app" target="_blank"
+                      rel="noopener noreferrer" class="card-cta">
+                      <span data-i18n="cta.live">Ver app en vivo</span> <span aria-hidden="true">→</span>
+                    </a>
+                    <a href="https://github.com/Retzmor?tab=repositories" target="_blank" rel="noopener noreferrer"
+                      class="card-repo">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <path
+                          d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                      </svg>
+                      <span data-i18n="cta.repo">Repositorio</span>
+                    </a>
+                  </div>
+                  <span class="card-platform">VERCEL</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- WEB_04: Dream Journey (IA) -->
+            <article class="project-card reveal" style="--delay: 0.08s">
+              <div class="card-media card-media--web">
+                <span class="media-badge" data-i18n="web4.badge">WEB · INTELIGENCIA ARTIFICIAL</span>
+                <img src="Imagenes/dreamjourney.png" alt="Captura de la aplicación web Dream Journey (IA)">
+              </div>
+              <div class="card-body">
+                <div class="card-meta-row">
+                  <span class="card-engine" data-i18n="web4.engine">REACT · MODELOS DE IA</span>
+                  <span>WEB_04</span>
+                </div>
+                <h3>Dream Journey (IA)</h3>
+                <p data-i18n="web4.desc">
+                  Diario de sueños con análisis simbólico y de patrones mediante modelos de inteligencia artificial.
+                </p>
+                <ul class="tech-tags" aria-label="Tecnologías implementadas">
+                  <li data-i18n="web4.tag1">Integración de IA</li>
+                  <li>APIs REST</li>
+                  <li>React</li>
+                </ul>
+                <div class="card-footer">
+                  <div class="card-actions">
+                    <a href="https://guileless-gnome-2cd7c7.netlify.app" target="_blank" rel="noopener noreferrer"
+                      class="card-cta">
+                      <span data-i18n="cta.live">Ver app en vivo</span> <span aria-hidden="true">→</span>
+                    </a>
+                    <a href="https://github.com/Retzmor?tab=repositories" target="_blank" rel="noopener noreferrer"
+                      class="card-repo">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <path
+                          d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                      </svg>
+                      <span data-i18n="cta.repo">Repositorio</span>
+                    </a>
+                  </div>
+                  <span class="card-platform">NETLIFY</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- CATEGORÍA B — VIDEOJUEGOS EN UNITY & C# -->
+        <div class="category-group" data-category="unity">
+          <div class="category-header reveal">
+            <div class="category-title-wrap">
+              <span class="category-code" data-i18n="catB.code">CAT_B</span>
+              <h3 class="category-title" data-i18n="catB.title">Videojuegos en Unity &amp; C#</h3>
             </div>
-          </article>
+            <span class="category-subtitle" data-i18n="catB.subtitle">ITCH.IO BUILDS · CÓDIGO C# EN GITHUB</span>
+          </div>
+
+          <div class="projects-grid">
+            <!-- PRJ_01: Platformer (Thomas Was Alone) -->
+            <article class="project-card reveal">
+              <div class="card-media card-media--crop">
+                <span class="media-badge">2D · PLATFORMER</span>
+                <img src="Imagenes/thomas.png" alt="Captura del juego Platformer (Thomas Was Alone) en Unity">
+              </div>
+              <div class="card-body">
+                <div class="card-meta-row">
+                  <span class="card-engine">UNITY 2D · C#</span>
+                  <span>PRJ_01</span>
+                </div>
+                <h3>Platformer (Thomas Was Alone)</h3>
+                <p data-i18n="game1.desc">Movimiento, físicas y control de múltiples personajes.</p>
+                <ul class="tech-tags" aria-label="Sistemas implementados">
+                  <li data-i18n="game1.tag1">Físicas 2D</li>
+                  <li data-i18n="game1.tag2">Multi-personaje</li>
+                  <li data-i18n="game1.tag3">Plataformas</li>
+                </ul>
+                <div class="card-footer">
+                  <div class="card-actions">
+                    <a href="https://retzmor.itch.io/thomas-was-alone" target="_blank" rel="noopener noreferrer"
+                      class="card-cta">
+                      <span data-i18n="cta.itch">Ver demo en itch.io</span> <span aria-hidden="true">→</span>
+                    </a>
+                    <a href="https://github.com/Retzmor/ErwinWasAlone" target="_blank" rel="noopener noreferrer"
+                      class="card-repo">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <path
+                          d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                      </svg>
+                      <span data-i18n="cta.githubCode">Código GitHub</span>
+                    </a>
+                  </div>
+                  <span class="card-platform">WEB / BUILD</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- PRJ_02: Flappy Ufo -->
+            <article class="project-card reveal" style="--delay: 0.08s">
+              <div class="card-media card-media--portrait" style="--portrait-bg: url('Imagenes/flappy.png');">
+                <span class="media-badge">2D · ARCADE</span>
+                <img src="Imagenes/flappy.png" alt="Captura del juego Flappy Ufo">
+              </div>
+              <div class="card-body">
+                <div class="card-meta-row">
+                  <span class="card-engine">UNITY 2D · C#</span>
+                  <span>PRJ_02</span>
+                </div>
+                <h3>Flappy Ufo</h3>
+                <p data-i18n="game2.desc">Colisiones, gestión de obstáculos y sistema de reinicio.</p>
+                <ul class="tech-tags" aria-label="Sistemas implementados">
+                  <li data-i18n="game2.tag1">Colisiones 2D</li>
+                  <li data-i18n="game2.tag2">Obstáculos</li>
+                  <li data-i18n="game2.tag3">Score &amp; Reinicio</li>
+                </ul>
+                <div class="card-footer">
+                  <div class="card-actions">
+                    <a href="https://retzmor.itch.io/flappy-bird" target="_blank" rel="noopener noreferrer"
+                      class="card-cta">
+                      <span data-i18n="cta.itch">Ver demo en itch.io</span> <span aria-hidden="true">→</span>
+                    </a>
+                    <a href="https://github.com/Retzmor/FlappyBirdGame" target="_blank" rel="noopener noreferrer"
+                      class="card-repo">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <path
+                          d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                      </svg>
+                      <span data-i18n="cta.githubCode">Código GitHub</span>
+                    </a>
+                  </div>
+                  <span class="card-platform">WEB / BUILD</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- PRJ_03: Plantocalypse -->
+            <article class="project-card reveal">
+              <div class="card-media">
+                <span class="media-badge">2D · SURVIVAL</span>
+                <img src="Imagenes/plantocalypse.png" alt="Captura del juego Plantocalypse">
+              </div>
+              <div class="card-body">
+                <div class="card-meta-row">
+                  <span class="card-engine">UNITY 2D · C#</span>
+                  <span>PRJ_03</span>
+                </div>
+                <h3>Plantocalypse</h3>
+                <p data-i18n="game3.desc">Sistema de supervivencia e interacción con el entorno.</p>
+                <ul class="tech-tags" aria-label="Sistemas implementados">
+                  <li data-i18n="game3.tag1">Supervivencia</li>
+                  <li data-i18n="game3.tag2">Interacción</li>
+                  <li>UI / HUD</li>
+                </ul>
+                <div class="card-footer">
+                  <div class="card-actions">
+                    <a href="https://retzmor.itch.io/plantocalypse" target="_blank" rel="noopener noreferrer"
+                      class="card-cta">
+                      <span data-i18n="cta.itch">Ver demo en itch.io</span> <span aria-hidden="true">→</span>
+                    </a>
+                    <a href="https://github.com/Retzmor/Plantocalypse" target="_blank" rel="noopener noreferrer"
+                      class="card-repo">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <path
+                          d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                      </svg>
+                      <span data-i18n="cta.githubCode">Código GitHub</span>
+                    </a>
+                  </div>
+                  <span class="card-platform">WEB / BUILD</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- PRJ_04: Ashes of Destiny -->
+            <article class="project-card reveal" style="--delay: 0.08s">
+              <div class="card-media">
+                <span class="media-badge">3D · ACTION</span>
+                <img src="Imagenes/ashes.png" alt="Captura del juego Ashes of Destiny">
+              </div>
+              <div class="card-body">
+                <div class="card-meta-row">
+                  <span class="card-engine">UNITY 3D · C#</span>
+                  <span>PRJ_04</span>
+                </div>
+                <h3>Ashes of Destiny</h3>
+                <p data-i18n="game4.desc">Movimiento de personaje, combate básico y estructura del juego.</p>
+                <ul class="tech-tags" aria-label="Sistemas implementados">
+                  <li data-i18n="game4.tag1">Control 3D</li>
+                  <li data-i18n="game4.tag2">Combate básico</li>
+                  <li data-i18n="game4.tag3">Estructura</li>
+                </ul>
+                <div class="card-footer">
+                  <div class="card-actions">
+                    <a href="https://retzmor.itch.io/ashes-of-destiny" target="_blank" rel="noopener noreferrer"
+                      class="card-cta">
+                      <span data-i18n="cta.itch">Ver demo en itch.io</span> <span aria-hidden="true">→</span>
+                    </a>
+                    <a href="https://github.com/Retzmor/Ashe-of-destiny" target="_blank" rel="noopener noreferrer"
+                      class="card-repo">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <path
+                          d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                      </svg>
+                      <span data-i18n="cta.githubCode">Código GitHub</span>
+                    </a>
+                  </div>
+                  <span class="card-platform">WEB / BUILD</span>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -1307,61 +1776,82 @@
     <section id="sobre-mi" class="section-block">
       <div class="container profile-grid">
         <div class="reveal">
-          <span class="section-index">02 // ENFOQUE</span>
-          <h2>Sobre mí</h2>
-          <p class="about-copy">
-            Soy estudiante de <strong>Desarrollo de Videojuegos y Entornos Interactivos en el SENA</strong> y
-            desarrollador de videojuegos en formación con enfoque técnico en <strong>Unity y C#</strong>. Me interesa la
-            resolución de problemas lógicos, el diseño de mecánicas sólidas y la creación de prototipos funcionales.
+          <span class="section-index" data-i18n="about.index">02 // ENFOQUE</span>
+          <h2 data-i18n="about.heading">Sobre mí</h2>
+          <p class="about-copy" data-i18n-html="about.copy">
+            Soy <strong>Desarrollador de Software y Videojuegos</strong> enfocado en construir desde
+            <strong>aplicaciones web en React e integraciones con IA</strong> hasta <strong>experiencias interactivas en
+              Unity y C#</strong>. Transformo requerimientos complejos en productos rápidos, mantenibles y listos para
+            escalar.
           </p>
 
           <ul class="focus-list">
             <li class="focus-item">
               <span class="focus-code">[01]</span>
               <div>
-                <strong>Arquitectura limpia en C#</strong>
-                <span>Componentes desacoplados y legibles orientados a escalar mecánicas sin fricción.</span>
+                <strong data-i18n="focus1.title">Producto Web, APIs &amp; Serverless</strong>
+                <span data-i18n="focus1.desc">
+                  Interfaces rápidas en React y Tailwind conectadas a APIs REST, caché optimizada y funciones
+                  serverless.
+                </span>
               </div>
             </li>
             <li class="focus-item">
               <span class="focus-code">[02]</span>
               <div>
-                <strong>Sistemas jugables y físicas</strong>
-                <span>Control de personaje, detección de colisiones y respuesta consistente al jugador.</span>
+                <strong data-i18n="focus2.title">Integración de IA aplicada</strong>
+                <span data-i18n="focus2.desc">
+                  Conexión con modelos de inteligencia artificial para análisis, recomendación y automatización con valor
+                  real para el usuario.
+                </span>
               </div>
             </li>
             <li class="focus-item">
               <span class="focus-code">[03]</span>
               <div>
-                <strong>Debugging y validación</strong>
-                <span>Pruebas funcionales continuas para detectar fallos de lógica y estabilizar builds.</span>
+                <strong data-i18n="focus3.title">Arquitectura limpia en C# &amp; Unity</strong>
+                <span data-i18n="focus3.desc">
+                  Componentes desacoplados, físicas consistentes y debugging continuo para estabilizar builds y escalar
+                  mecánicas.
+                </span>
               </div>
             </li>
           </ul>
         </div>
 
         <aside class="stack-panel reveal" style="--delay: 0.1s" aria-labelledby="stack-heading">
-          <span class="section-index">STACK // TÉCNICO</span>
-          <h3 id="stack-heading">Habilidades Técnicas</h3>
+          <span class="section-index" data-i18n="stack.index">STACK // TÉCNICO</span>
+          <h3 id="stack-heading" data-i18n="stack.heading">Habilidades Técnicas</h3>
 
           <div class="stack-groups">
             <div class="stack-group">
-              <span class="stack-group-label">Motor &amp; Lenguaje</span>
+              <span class="stack-group-label" data-i18n="stack.webAiLabel">Web &amp; IA</span>
+              <ul class="skills-list">
+                <li>React</li>
+                <li>JavaScript (ES6+)</li>
+                <li>Tailwind CSS</li>
+                <li>Node.js / APIs REST</li>
+                <li data-i18n="stack.aiSkill">Integración de IA</li>
+              </ul>
+            </div>
+
+            <div class="stack-group">
+              <span class="stack-group-label" data-i18n="stack.engineLabel">Motor &amp; Lenguaje</span>
               <ul class="skills-list">
                 <li>Unity (C#)</li>
               </ul>
             </div>
 
             <div class="stack-group">
-              <span class="stack-group-label">Sistemas &amp; Gameplay</span>
+              <span class="stack-group-label" data-i18n="stack.systemsLabel">Sistemas &amp; Gameplay</span>
               <ul class="skills-list">
-                <li>Lógica de Programación</li>
-                <li>Físicas &amp; Colisiones</li>
+                <li data-i18n="stack.logic">Lógica de Programación</li>
+                <li data-i18n="stack.physics">Físicas &amp; Colisiones</li>
               </ul>
             </div>
 
             <div class="stack-group">
-              <span class="stack-group-label">Calidad &amp; Flujo</span>
+              <span class="stack-group-label" data-i18n="stack.qualityLabel">Calidad &amp; Flujo</span>
               <ul class="skills-list">
                 <li>Debugging</li>
                 <li>Game Testing</li>
@@ -1378,15 +1868,18 @@
       <div class="container">
         <div class="contact-panel reveal">
           <div class="contact-copy">
-            <span class="section-index">03 // CONTACTO</span>
-            <h2>¿Tienes una oportunidad o vacante? Hablemos.</h2>
-            <p>Estoy disponible para prácticas profesionales o posiciones junior en desarrollo de videojuegos con Unity
-              y C#.</p>
+            <span class="section-index" data-i18n="contact.index">03 // CONTACTO</span>
+            <h2 data-i18n="contact.heading">
+              ¿Buscas un desarrollador para tu producto web, integración con IA o proyecto en Unity? Hablemos.
+            </h2>
+            <p data-i18n="contact.subcopy">
+              Disponible para proyectos freelance y posiciones remotas a tiempo completo o por contrato.
+            </p>
 
             <div class="email-row">
               <span class="email-text" id="email-address">erwinsalas1278@gmail.com</span>
               <button type="button" class="copy-btn" id="copy-email-btn"
-                aria-label="Copiar correo electrónico al portapapeles">
+                aria-label="Copiar correo electrónico al portapapeles" data-i18n="contact.copy">
                 Copiar
               </button>
             </div>
@@ -1394,7 +1887,7 @@
           </div>
 
           <div class="contact-actions">
-            <a href="mailto:erwinsalas1278@gmail.com" class="btn btn-primary">Enviar correo</a>
+            <a href="mailto:erwinsalas1278@gmail.com" class="btn btn-primary" data-i18n="contact.emailBtn">Enviar correo</a>
             <a href="https://wa.me/573125313724" target="_blank" rel="noopener noreferrer"
               class="btn btn-whatsapp">WhatsApp</a>
           </div>
@@ -1405,7 +1898,7 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <span>Erwin Salas · Unity &amp; C# Game Developer</span>
+      <span data-i18n="footer.role">Erwin Salas · Software &amp; Game Developer (React, C# &amp; Unity)</span>
       <div class="footer-links">
         <a href="https://retzmor.itch.io" target="_blank" rel="noopener noreferrer">Itch.io</a>
         <a href="https://github.com/Retzmor?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -1416,6 +1909,7 @@
 
   <script>
     (function () {
+      // --- REVEAL ON SCROLL ---
       var items = document.querySelectorAll('.reveal');
 
       if (!('IntersectionObserver' in window)) {
@@ -1433,7 +1927,7 @@
         items.forEach(function (el) { io.observe(el); });
       }
 
-      // Resplandor siguiendo al cursor en las tarjetas de proyecto
+      // --- RESPLANDOR SIGUIENDO AL CURSOR EN TARJETAS ---
       document.querySelectorAll('.project-card').forEach(function (card) {
         card.addEventListener('mousemove', function (e) {
           var r = card.getBoundingClientRect();
@@ -1442,20 +1936,318 @@
         });
       });
 
-      // Copiar correo al portapapeles con confirmación accesible
+      // --- PESTAÑAS DE FILTRO POR CATEGORÍA ---
+      var tabButtons = document.querySelectorAll('.tab-btn');
+      var categoryGroups = document.querySelectorAll('.category-group');
+
+      tabButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var filter = btn.getAttribute('data-filter');
+
+          tabButtons.forEach(function (tab) {
+            var active = tab === btn;
+            tab.classList.toggle('is-active', active);
+            tab.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+
+          categoryGroups.forEach(function (group) {
+            var cat = group.getAttribute('data-category');
+            var show = filter === 'all' || cat === filter;
+            group.hidden = !show;
+          });
+        });
+      });
+
+      // --- DICCIONARIO BILINGÜE ES / EN ---
+      var currentLang = 'es';
+      var translations = {
+        es: {
+          pageTitle: 'Erwin Salas — Desarrollador de Software & Videojuegos (React, C# & Unity)',
+          metaDesc: 'Portafolio de Erwin Salas, Desarrollador de Software y Videojuegos (React, C# & Unity). Aplicaciones web, integraciones con IA y videojuegos disponibles para proyectos freelance y posiciones remotas.',
+          navLabel: 'Navegación principal',
+          langToggleLabel: 'Selector de idioma',
+          inspectorLabel: 'Ficha técnica del desarrollador',
+          tabsLabel: 'Filtrar proyectos por categoría',
+          copyAria: 'Copiar correo electrónico al portapapeles',
+          copyDefault: 'Copiar',
+          copyDone: '✓ Copiado',
+          copyStatus: 'Correo copiado al portapapeles',
+          skip: 'Saltar al contenido',
+          'nav.projects': '01 // Proyectos',
+          'nav.about': '02 // Enfoque',
+          'nav.contact': '03 // Contacto',
+          'header.available': 'Disponible · Freelance & Remoto',
+          'hero.eyebrow': 'Portafolio Técnico · Web, IA & Game Dev',
+          'hero.subtitle': 'Desarrollador de Software & Videojuegos (React, C# & Unity)',
+          'hero.description': 'Diseño y construyo aplicaciones web modernas en React con integración de IA, junto a sistemas y videojuegos en Unity & C#, con foco en arquitectura limpia, rendimiento y producto listo para producción.',
+          'hero.ctaProjects': 'Ver proyectos',
+          'hero.ctaContact': 'Contacto',
+          'inspector.aiVal': 'Modelos IA · APIs REST · Serverless',
+          'inspector.buildsVal': '4 Apps Web & IA · 4 Demos Unity',
+          'inspector.statusVal': 'Disponible para proyectos freelance y posiciones remotas',
+          'inspector.footer': 'focus: producto web · integración IA · sistemas Unity',
+          'projects.index': '01 // PROYECTOS',
+          'projects.heading': 'Productos Web, IA & Videojuegos',
+          'projects.lead': 'Aplicaciones web en producción con APIs e inteligencia artificial, junto a cuatro prototipos jugables en Unity & C# con código fuente abierto.',
+          'tabs.all': 'Todos',
+          'tabs.web': 'Web & IA',
+          'tabs.unity': 'Unity & C#',
+          'catA.code': 'CAT_A',
+          'catA.title': 'Aplicaciones Web & IA',
+          'catA.subtitle': 'REACT · SERVERLESS · APIS · IA',
+          'catB.code': 'CAT_B',
+          'catB.title': 'Videojuegos en Unity & C#',
+          'catB.subtitle': 'ITCH.IO BUILDS · CÓDIGO C# EN GITHUB',
+          'cta.live': 'Ver app en vivo',
+          'cta.repo': 'Repositorio',
+          'cta.itch': 'Ver demo en itch.io',
+          'cta.githubCode': 'Código GitHub',
+          'web1.badge': 'WEB · API & SERVERLESS',
+          'web1.title': '¿Qué Veo Hoy?',
+          'web1.desc': 'Recomendador inteligente con YouTube Data API v3, caché optimizada y funciones serverless.',
+          'web1.tag3': 'Caché optimizada',
+          'web2.badge': 'WEB · COMPARADOR & CRO',
+          'web2.engine': 'JAVASCRIPT · CONVERSIÓN',
+          'web2.desc': 'Comparador de portátiles orientado a conversión y afiliados con filtrado por perfil técnico y precios.',
+          'web2.tag2': 'Comparativa Specs',
+          'web2.tag3': 'Afiliados & CRO',
+          'web3.badge': 'WEB · UTILIDAD & SEO',
+          'web3.engine': 'REACT · NORMATIVA LABORAL',
+          'web3.title': 'Calculadora de Horas Extras',
+          'web3.desc': 'Utilidad laboral indexada en Google con cálculos normativos de recargos y horas extras en tiempo real.',
+          'web3.tag1': 'Cálculo en tiempo real',
+          'web3.tag2': 'SEO Indexado',
+          'web4.badge': 'WEB · INTELIGENCIA ARTIFICIAL',
+          'web4.engine': 'REACT · MODELOS DE IA',
+          'web4.desc': 'Diario de sueños con análisis simbólico y de patrones mediante modelos de inteligencia artificial.',
+          'web4.tag1': 'Integración de IA',
+          'game1.desc': 'Movimiento, físicas y control de múltiples personajes.',
+          'game1.tag1': 'Físicas 2D',
+          'game1.tag2': 'Multi-personaje',
+          'game1.tag3': 'Plataformas',
+          'game2.desc': 'Colisiones, gestión de obstáculos y sistema de reinicio.',
+          'game2.tag1': 'Colisiones 2D',
+          'game2.tag2': 'Obstáculos',
+          'game2.tag3': 'Score & Reinicio',
+          'game3.desc': 'Sistema de supervivencia e interacción con el entorno.',
+          'game3.tag1': 'Supervivencia',
+          'game3.tag2': 'Interacción',
+          'game4.desc': 'Movimiento de personaje, combate básico y estructura del juego.',
+          'game4.tag1': 'Control 3D',
+          'game4.tag2': 'Combate básico',
+          'game4.tag3': 'Estructura',
+          'about.index': '02 // ENFOQUE',
+          'about.heading': 'Sobre mí',
+          'about.copy': 'Soy <strong>Desarrollador de Software y Videojuegos</strong> enfocado en construir desde <strong>aplicaciones web en React e integraciones con IA</strong> hasta <strong>experiencias interactivas en Unity y C#</strong>. Transformo requerimientos complejos en productos rápidos, mantenibles y listos para escalar.',
+          'focus1.title': 'Producto Web, APIs & Serverless',
+          'focus1.desc': 'Interfaces rápidas en React y Tailwind conectadas a APIs REST, caché optimizada y funciones serverless.',
+          'focus2.title': 'Integración de IA aplicada',
+          'focus2.desc': 'Conexión con modelos de inteligencia artificial para análisis, recomendación y automatización con valor real para el usuario.',
+          'focus3.title': 'Arquitectura limpia en C# & Unity',
+          'focus3.desc': 'Componentes desacoplados, físicas consistentes y debugging continuo para estabilizar builds y escalar mecánicas.',
+          'stack.index': 'STACK // TÉCNICO',
+          'stack.heading': 'Habilidades Técnicas',
+          'stack.webAiLabel': 'Web & IA',
+          'stack.aiSkill': 'Integración de IA',
+          'stack.engineLabel': 'Motor & Lenguaje',
+          'stack.systemsLabel': 'Sistemas & Gameplay',
+          'stack.logic': 'Lógica de Programación',
+          'stack.physics': 'Físicas & Colisiones',
+          'stack.qualityLabel': 'Calidad & Flujo',
+          'contact.index': '03 // CONTACTO',
+          'contact.heading': '¿Buscas un desarrollador para tu producto web, integración con IA o proyecto en Unity? Hablemos.',
+          'contact.subcopy': 'Disponible para proyectos freelance y posiciones remotas a tiempo completo o por contrato.',
+          'contact.copy': 'Copiar',
+          'contact.emailBtn': 'Enviar correo',
+          'footer.role': 'Erwin Salas · Desarrollador de Software & Videojuegos (React, C# & Unity)'
+        },
+        en: {
+          pageTitle: 'Erwin Salas — Software & Game Developer (React, C# & Unity)',
+          metaDesc: 'Portfolio of Erwin Salas, Software & Game Developer (React, C# & Unity). Production web apps, AI integrations, and Unity games. Available for freelance projects and remote roles.',
+          navLabel: 'Primary navigation',
+          langToggleLabel: 'Language selector',
+          inspectorLabel: 'Developer technical sheet',
+          tabsLabel: 'Filter projects by category',
+          copyAria: 'Copy email address to clipboard',
+          copyDefault: 'Copy',
+          copyDone: '✓ Copied',
+          copyStatus: 'Email copied to clipboard',
+          skip: 'Skip to content',
+          'nav.projects': '01 // Projects',
+          'nav.about': '02 // Focus',
+          'nav.contact': '03 // Contact',
+          'header.available': 'Available · Freelance & Remote',
+          'hero.eyebrow': 'Technical Portfolio · Web, AI & Game Dev',
+          'hero.subtitle': 'Software & Game Developer (React, C# & Unity)',
+          'hero.description': 'I design and build modern React web applications with AI integration, alongside gameplay systems and games in Unity & C#, focused on clean architecture, performance, and production-ready delivery.',
+          'hero.ctaProjects': 'View projects',
+          'hero.ctaContact': 'Contact',
+          'inspector.aiVal': 'AI Models · REST APIs · Serverless',
+          'inspector.buildsVal': '4 Web & AI Apps · 4 Unity Demos',
+          'inspector.statusVal': 'Available for freelance projects & remote roles',
+          'inspector.footer': 'focus: web products · AI integration · Unity systems',
+          'projects.index': '01 // PROJECTS',
+          'projects.heading': 'Web Products, AI & Games',
+          'projects.lead': 'Production web applications powered by APIs and AI, alongside four playable Unity & C# prototypes with open source repositories.',
+          'tabs.all': 'All',
+          'tabs.web': 'Web & AI',
+          'tabs.unity': 'Unity & C#',
+          'catA.code': 'CAT_A',
+          'catA.title': 'Web & AI Applications',
+          'catA.subtitle': 'REACT · SERVERLESS · APIS · AI',
+          'catB.code': 'CAT_B',
+          'catB.title': 'Unity & C# Games',
+          'catB.subtitle': 'ITCH.IO BUILDS · C# SOURCE ON GITHUB',
+          'cta.live': 'View live app',
+          'cta.repo': 'Repository',
+          'cta.itch': 'Play on itch.io',
+          'cta.githubCode': 'GitHub Code',
+          'web1.badge': 'WEB · API & SERVERLESS',
+          'web1.title': '¿Qué Veo Hoy?',
+          'web1.desc': 'Smart recommender built with YouTube Data API v3, optimized caching, and serverless functions.',
+          'web1.tag3': 'Optimized Caching',
+          'web2.badge': 'WEB · COMPARISON & CRO',
+          'web2.engine': 'JAVASCRIPT · CONVERSION',
+          'web2.desc': 'Conversion-focused laptop comparison platform with technical spec filtering and affiliate funnels.',
+          'web2.tag2': 'Spec Comparison',
+          'web2.tag3': 'Affiliates & CRO',
+          'web3.badge': 'WEB · UTILITY & SEO',
+          'web3.engine': 'REACT · LABOR LAW',
+          'web3.title': 'Overtime Calculator',
+          'web3.desc': 'Google-indexed labor utility delivering real-time statutory overtime and surcharge calculations.',
+          'web3.tag1': 'Real-time Math',
+          'web3.tag2': 'Google-Indexed SEO',
+          'web4.badge': 'WEB · ARTIFICIAL INTELLIGENCE',
+          'web4.engine': 'REACT · AI MODELS',
+          'web4.desc': 'Dream journal featuring symbolic and pattern analysis powered by artificial intelligence models.',
+          'web4.tag1': 'AI Integration',
+          'game1.desc': 'Movement, 2D physics, and multi-character switching mechanics.',
+          'game1.tag1': '2D Physics',
+          'game1.tag2': 'Multi-character',
+          'game1.tag3': 'Platformer',
+          'game2.desc': 'Collision detection, obstacle spawning, and reset loop system.',
+          'game2.tag1': '2D Collisions',
+          'game2.tag2': 'Obstacles',
+          'game2.tag3': 'Score & Reset',
+          'game3.desc': 'Survival gameplay loop and environment interaction system.',
+          'game3.tag1': 'Survival',
+          'game3.tag2': 'Interaction',
+          'game4.desc': '3D character movement, core combat mechanics, and game structure.',
+          'game4.tag1': '3D Controller',
+          'game4.tag2': 'Core Combat',
+          'game4.tag3': 'Architecture',
+          'about.index': '02 // FOCUS',
+          'about.heading': 'About Me',
+          'about.copy': 'I am a <strong>Software & Game Developer</strong> focused on building everything from <strong>React web applications and AI integrations</strong> to <strong>interactive experiences in Unity and C#</strong>. I turn complex requirements into fast, maintainable, scalable products.',
+          'focus1.title': 'Web Products, APIs & Serverless',
+          'focus1.desc': 'Fast React and Tailwind interfaces connected to REST APIs, optimized caching, and serverless functions.',
+          'focus2.title': 'Applied AI Integration',
+          'focus2.desc': 'Connecting artificial intelligence models for analysis, recommendations, and automation with real user value.',
+          'focus3.title': 'Clean C# & Unity Architecture',
+          'focus3.desc': 'Decoupled components, consistent physics, and continuous debugging to stabilize builds and scale mechanics.',
+          'stack.index': 'STACK // TECH',
+          'stack.heading': 'Technical Skills',
+          'stack.webAiLabel': 'Web & AI',
+          'stack.aiSkill': 'AI Integration',
+          'stack.engineLabel': 'Engine & Language',
+          'stack.systemsLabel': 'Systems & Gameplay',
+          'stack.logic': 'Programming Logic',
+          'stack.physics': 'Physics & Collisions',
+          'stack.qualityLabel': 'Quality & Workflow',
+          'contact.index': '03 // CONTACT',
+          'contact.heading': 'Looking for a developer for your web product, AI integration, or Unity project? Let’s talk.',
+          'contact.subcopy': 'Available for freelance projects and full-time or contract remote roles.',
+          'contact.copy': 'Copy',
+          'contact.emailBtn': 'Send email',
+          'footer.role': 'Erwin Salas · Software & Game Developer (React, C# & Unity)'
+        }
+      };
+
+      var langButtons = document.querySelectorAll('.lang-btn');
       var copyBtn = document.getElementById('copy-email-btn');
       var emailEl = document.getElementById('email-address');
       var statusEl = document.getElementById('copy-status');
 
+      function applyLanguage(lang) {
+        if (!translations[lang]) lang = 'es';
+        currentLang = lang;
+        var dict = translations[lang];
+
+        document.documentElement.setAttribute('lang', lang);
+        document.title = dict.pageTitle;
+
+        var metaDesc = document.getElementById('meta-description');
+        if (metaDesc) metaDesc.setAttribute('content', dict.metaDesc);
+
+        var mainNav = document.getElementById('main-nav');
+        if (mainNav) mainNav.setAttribute('aria-label', dict.navLabel);
+
+        var langToggle = document.getElementById('lang-toggle');
+        if (langToggle) langToggle.setAttribute('aria-label', dict.langToggleLabel);
+
+        var inspectorPanel = document.getElementById('inspector-panel');
+        if (inspectorPanel) inspectorPanel.setAttribute('aria-label', dict.inspectorLabel);
+
+        var projectTabs = document.getElementById('project-tabs');
+        if (projectTabs) projectTabs.setAttribute('aria-label', dict.tabsLabel);
+
+        if (copyBtn) {
+          copyBtn.setAttribute('aria-label', dict.copyAria);
+          if (!copyBtn.classList.contains('copied')) {
+            copyBtn.textContent = dict.copyDefault;
+          }
+        }
+
+        document.querySelectorAll('[data-i18n]').forEach(function (el) {
+          var key = el.getAttribute('data-i18n');
+          if (dict[key] !== undefined) {
+            el.textContent = dict[key];
+          }
+        });
+
+        document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+          var key = el.getAttribute('data-i18n-html');
+          if (dict[key] !== undefined) {
+            el.innerHTML = dict[key];
+          }
+        });
+
+        langButtons.forEach(function (btn) {
+          var isMatch = btn.getAttribute('data-lang') === lang;
+          btn.classList.toggle('is-active', isMatch);
+          btn.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
+        });
+
+        try {
+          window.localStorage.setItem('portfolio_lang', lang);
+        } catch (e) { }
+      }
+
+      langButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          applyLanguage(btn.getAttribute('data-lang'));
+        });
+      });
+
+      try {
+        var savedLang = window.localStorage.getItem('portfolio_lang');
+        if (savedLang === 'en' || savedLang === 'es') {
+          applyLanguage(savedLang);
+        }
+      } catch (e) { }
+
+      // --- COPIAR CORREO AL PORTAPAPELES ---
       if (copyBtn && emailEl) {
         copyBtn.addEventListener('click', function () {
           var email = emailEl.textContent.trim();
           var markCopied = function () {
-            copyBtn.textContent = '✓ Copiado';
+            var dict = translations[currentLang] || translations.es;
+            copyBtn.textContent = dict.copyDone;
             copyBtn.classList.add('copied');
-            if (statusEl) statusEl.textContent = 'Correo copiado al portapapeles';
+            if (statusEl) statusEl.textContent = dict.copyStatus;
             window.setTimeout(function () {
-              copyBtn.textContent = 'Copiar';
+              var activeDict = translations[currentLang] || translations.es;
+              copyBtn.textContent = activeDict.copyDefault;
               copyBtn.classList.remove('copied');
               if (statusEl) statusEl.textContent = '';
             }, 2200);
